@@ -16,6 +16,8 @@ class Anggota extends Model
         'role',
         'status_anggota',
         'divisi',
+        'nim',
+        'tanggal_lahir',
         'angkatan',
         'no_hp',
         'alamat',

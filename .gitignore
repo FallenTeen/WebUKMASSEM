@@ -6,6 +6,7 @@
 /storage/*.key
 /storage/pail
 /vendor
+/Database/seeders/AdminSeeders.php
 .env
 .env.backup
 .env.production

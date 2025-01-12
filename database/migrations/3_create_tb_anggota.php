@@ -13,7 +13,9 @@ return new class extends Migration {
         Schema::create('tb_anggota', function (Blueprint $table) {
             $table->id();
             $table->string('nama_lengkap');
-            $table->string('nama_panggilan');
+            $table->string('nama_panggilan')->nullable();
+            $table->string('nim');
+            $table->string('tanggal_lahir');
             $table->enum('role', ['admin', 'ketum', 'sekretaris', 'bendahara', 'kadiv', 'digman', 'rt']);
             $table->enum('status_anggota', ['ang_muda', 'ang_tetap', 'bpo', 'lainnya']);
             $table->enum('divisi', ['musik', 'tari', 'teater', 'foto', 'film']);
