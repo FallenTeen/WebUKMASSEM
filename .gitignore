@@ -22,7 +22,5 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
-database/seeders/AdminSeeder.php
-/database/seeders/AdminSeeder.php
-database/seeders/*
 /database/seeders/*
+

@@ -1,1 +1,6 @@
 *.sqlite*
+database/seeders/AdminSeeder.php
+/database/seeders/AdminSeeder.php
+database/seeders/*
+/database/seeders/*
+/database/seeders/*
