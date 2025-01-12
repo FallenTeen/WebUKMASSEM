@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Proker extends Model
+{
+    use HasFactory;
+    protected $table = 'tb_proker';
+    protected $fillable = [
+        'judul',
+        'proker',
+        'deskripsi',
+        'gambar',
+        'gambardesk',
+        'kategori',
+        'tags',
+    ];
+
+    protected $casts = [
+        'tags' => 'array',
+        'gambardesk' => 'array',
+    ];
+    protected $attributes = [
+        'kategori' => 'sekunder',
+    ];
+    public function getGambarUrlAttribute()
+    {
+        return $this->gambar ? asset('storage/' . $this->gambar) : null;
+    }
+
+    public function getGambardeskUrlAttribute()
+    {
+        return $this->gambardesk ? asset('storage/' . $this->gambardesk) : null;
+    }
+    public function rapat()
+    {
+        return $this->hasMany(Rapat::class, 'proker_id');
+    }
+}

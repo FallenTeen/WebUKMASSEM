@@ -17,10 +17,9 @@ return new class extends Migration
             $table->enum('proker',['fisma','ave','aos','mistik','penpro','redcarpet','ldoa','lain']);
             $table->text('deskripsi')->nullable();
             $table->string('gambar')->nullable();
-            $table->string('gambardesk')->nullable();
+            $table->json('gambardesk')->nullable();
             $table->enum('kategori', ['primer', 'sekunder'])->default('sekunder');
             $table->json('tags')->nullable();
-            $table->enum('tipe', ['proker', 'kegiatan']);
             $table->timestamps();
         });
     }
