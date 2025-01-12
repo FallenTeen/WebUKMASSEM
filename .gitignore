@@ -6,7 +6,7 @@
 /storage/*.key
 /storage/pail
 /vendor
-/Database/seeders/AdminSeeders.php
+/database/seeders/
 .env
 .env.backup
 .env.production
@@ -22,3 +22,7 @@ yarn-error.log
 /.nova
 /.vscode
 /.zed
+database/seeders/AdminSeeder.php
+/database/seeders/AdminSeeder.php
+database/seeders/*
+/database/seeders/*
