@@ -12,11 +12,13 @@ return new class extends Migration {
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
+            $table->string('username');
             $table->foreignId('anggota_id')->nullable()->constrained('tb_anggota')->onDelete('set null')->comment('Hubungan dengan anggota');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('verified_user')->default(false);
             $table->timestamps();
         });
 

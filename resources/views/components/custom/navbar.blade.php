@@ -26,7 +26,7 @@
                 class="mx-4 scroll-link relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
                 Home
             </a>
-            <a href="#deskripsi"
+            <a href="#sejarah"
                 class="mx-4 scroll-link relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
                 Sejarah
             </a>

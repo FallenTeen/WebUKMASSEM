@@ -1,6 +1,10 @@
 import "./bootstrap";
+import Alpine from "alpinejs";
 import AOS from "aos";
 import "aos/dist/aos.css";
+
+window.Alpine = Alpine;
+Alpine.start();
 
 window.AOS = AOS;
 window.onload = function () {
@@ -12,7 +16,7 @@ document.addEventListener("DOMContentLoaded", () => {
         duration: 800,
         easing: "ease-in-out",
         once: true,
-        offset: 100,
+        offset: -5,
     });
 
     // Smooth scrolling with ease-in-out
@@ -33,8 +37,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Custom smooth scroll function with ease-in-out
     function smoothScroll(target) {
+        const offset = -60; // Offset value to move scroll down slightly (can adjust as needed)
         const targetPosition =
-            target.getBoundingClientRect().top + window.scrollY;
+            target.getBoundingClientRect().top + window.scrollY + offset;
         const startPosition = window.scrollY;
         const distance = targetPosition - startPosition;
         const duration = 1500; // Duration in ms
@@ -76,10 +81,11 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("scroll", () => {
         const currentScrollTop = window.scrollY;
 
+        // Adjust scroll offset for navbar behavior
         if (currentScrollTop > lastScrollTop + 20) {
-            navbar.style.transform = "translateY(-100%)";
+            navbar.style.transform = "translateY(-100%)"; // Hide navbar when scrolling down
         } else if (currentScrollTop < lastScrollTop - 10) {
-            navbar.style.transform = "translateY(0)";
+            navbar.style.transform = "translateY(0)"; // Show navbar when scrolling up
         }
 
         lastScrollTop = currentScrollTop;
