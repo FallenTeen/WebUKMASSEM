@@ -8,8 +8,6 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
-
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 

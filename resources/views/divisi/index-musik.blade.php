@@ -7,9 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    <!-- GAPAKE INI COY -->
-    <!-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> -->
-
+    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
