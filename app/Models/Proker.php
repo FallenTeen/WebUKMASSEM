@@ -39,4 +39,9 @@ class Proker extends Model
     {
         return $this->hasMany(Rapat::class, 'proker_id');
     }
+    public function mainProker()
+    {
+        return $this->belongsTo(MainProker::class, 'main_proker_id');
+    }
 }
+

@@ -27,7 +27,7 @@ class Rapat extends Model
     }
     public function getJenisRapatAttribute($value)
     {
-        return ucfirst($value); // Mengubah 'proker' menjadi 'Proker'
+        return ucfirst($value);
     }
     public function presensi()
     {

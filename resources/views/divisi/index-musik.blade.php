@@ -7,7 +7,6 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
-    
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
@@ -30,7 +29,7 @@
         @livewire('contentmanager.general-carousel')
     </section>
 
-    <section id="divisi" class="py-8 h-auto justify-center items-center flex flex-col gap-8 w-full bg-black text-white">
+    <section id="divisi" class="py-8 h-auto justify-center items-center flex flex-col gap-8 w-full bg-white text-black">
         <di data-aos="fade-up" class="items-center flex justify-center flex-col px-24">
             <h1 class="text-4xl lg:text-6xl font-bold">Divisi</h1>
             <span class="font-semibold text-center mt-8">UKM ASSEM sendiri memiliki 5 divisi pengkaryaan yang meliputi
