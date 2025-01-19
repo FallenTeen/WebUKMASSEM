@@ -10,6 +10,7 @@ class Proker extends Model
     use HasFactory;
     protected $table = 'tb_proker';
     protected $fillable = [
+        'main_proker_id',
         'judul',
         'proker',
         'deskripsi',

@@ -28,7 +28,7 @@ Route::view('/teater', 'divisi.index-teater')->name('index.teater');
 
 
 Route::view('profile', 'profile')
-    ->middleware(['auth'])
+    ->middleware(['auth','verUser'])
     ->name('profile');
 
 Route::get('/logout', function () {
@@ -37,5 +37,9 @@ Route::get('/logout', function () {
     request()->session()->regenerateToken();
     return redirect('/');
 })->name('logout');
+
+//pranks
+Route::view('/login', 'nothing');
+Route::view('/adm', 'nothing');
 
 require __DIR__ . '/auth.php';

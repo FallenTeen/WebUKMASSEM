@@ -26,7 +26,8 @@
         cuma belum tau mo gimana layoutnya
 
     </section>
-    @livewire('contentmanager.gallery1')
+    @livewire('contentmanager.gallery1', ['randomize' => true])
+
 
     <x-custom.footer></x-custom.footer>
 

@@ -21,7 +21,7 @@
     <section id="landing" class="relative h-screen overflow-hidden bg-cover bg-center"
         style="background-image: url('{{ asset('images/bg-1.JPG') }}'); background-attachment: fixed;">
         <div class="absolute inset-0 bg-white opacity-30"></div>
-        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-around h-full from-white bg-gradient-to-t to-transparent bg-opacity-60"
+        <div class="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-around h-full from-black bg-gradient-to-t to-transparent bg-opacity-60"
             data-aos="zoom-out">
             <div class="mt-8 lg:mt-0 px-8 w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start">
                 <div class="bg-gradient-to-r from-red-700 to-red-400 w-fit rounded-full drop-shadow-lg backdrop-blur-md flex items-center justify-center"
@@ -32,13 +32,13 @@
                     <h1 class="px-6 py-1 text-white text-2xl font-bold text-center lg:text-left">Welcome To</h1>
                 </div>
 
-                <h2 class="text-black text-4xl lg:text-6xl font-black mb-2 mt-4 drop-shadow-lg text-center lg:text-left"
+                <h2 class="text-white text-4xl lg:text-6xl font-black mb-2 mt-4 drop-shadow-lg text-center lg:text-left"
                     data-aos="fade-up" data-aos-delay="600">UKM ASSEM</h2>
-                <p class="text-black text-xl lg:text-2xl mb-4 font-Poppins font-semibold text-center lg:text-left"
+                <p class="text-white text-xl lg:text-2xl mb-4 font-Poppins font-semibold text-center lg:text-left"
                     data-aos="fade-up" data-aos-delay="900">
                     Unit Kegiatan Mahasiswa Amikom Seneng Seni Dan Musik
                 </p>
-                <p class="text-black text-md lg:text-xl font-Poppins font-md mt-2 text-justify lg:text-left line-clamp-8"
+                <p class="text-white text-md lg:text-xl font-Poppins font-md mt-2 text-justify lg:text-left line-clamp-8"
                     data-aos="fade-up" data-aos-delay="900">
                     Unit UKM ASSEM (Amikom Seneng Seni dan Musik) adalah sebuah organisasi mahasiswa yang berdedikasi
                     dalam bidang
@@ -79,7 +79,7 @@
 
     </section>
 
-    <section id="sejarah" class="h-full flex flex-col gap-16 justify-center items-center bg-white text-black relative">
+    <section id="sejarah" class="h-full flex flex-col gap-16 justify-center items-center bg-black text-white relative">
         <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-indigo-500 opacity-50 to-transparent"
             style="mask-image: radial-gradient(circle at 15% 55%, rgba(75, 0, 130, 1) 5%, rgba(0, 0, 0, 0) 13%);">
         </div>
@@ -98,19 +98,20 @@
         <div class="max-w-screen-xl w-full px-4 sm:px-8 relative z-10">
             <div class="flex flex-col sm:flex-row items-center">
                 <!-- Image Section -->
-                <div data-aos="fade-right" class="sm:w-1/3 lg:1/3 w-72 p-6 text-center">
-                    <img src="{{ asset('icons/assem.png') }}" class="object-contain max-w-full mx-auto">
+                <div data-aos="fade-right" class="sm:w-1/3 lg:w-1/3 w-72 p-6 text-center">
+                    <img src="{{ asset('icons/assem.png') }}"
+                        class="object-contain max-w-full mx-auto rounded-full drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]">
                 </div>
 
                 <!-- Text Section -->
                 <div class="sm:w-2/3 w-full p-6">
                     <div class="text">
                         <span data-aos="fade-left" data-aos-delay="100"
-                            class="text-gray-500 border-b-2 border-merah uppercase">Tentang Kami</span>
+                            class="text-white/80 border-b-2 border-merah uppercase">Tentang Kami</span>
                         <h2 data-aos="fade-left" data-aos-delay="200" class="my-4 font-bold text-3xl sm:text-4xl">
                             Sejarah <span class="text-merah">UKM ASSEM</span>
                         </h2>
-                        <p data-aos="fade-left" data-aos-delay="300" class="text-gray-700">
+                        <p data-aos="fade-left" data-aos-delay="300" class="text-white/80">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid, commodi
                             doloremque, fugiat illum magni minus nisi nulla numquam obcaecati placeat quia, repellat
                             tempore voluptatum.
@@ -135,7 +136,7 @@
     </section>
 
 
-    <section class="flex justify-center mb-12">
+    <section class="flex justify-center pb-16 text-white bg-black">
         <div class="max-w-screen-xl w-full px-4 sm:px-8">
             <div class="flex text-center items-center">
                 <div class="w-full p-6">
@@ -146,14 +147,14 @@
                         <div class="flex gap-12 lg:gap-24">
                             <div class="flex flex-col text-start gap-4">
                                 <h1 data-aos="fade-right" class="text-2xl font-bold">VISI</h1>
-                                <p data-aos="fade-right" data-aos-delay="300" class="text-gray-700">
+                                <p data-aos="fade-right" data-aos-delay="300" class="text-white/80">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolore eveniet.
                                     Cumque iusto nobis tempore labore atque aliquam culpa earum.
                                 </p>
                             </div>
                             <div class="flex flex-col text-start gap-4">
                                 <h1 data-aos="fade-right" class="text-2xl font-bold">Misi</h1>
-                                <p data-aos="fade-right" data-aos-delay="300" class="text-gray-700">
+                                <p data-aos="fade-right" data-aos-delay="300" class="text-white/90">
                                     Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolore eveniet.
                                     Cumque iusto nobis tempore labore atque aliquam culpa earum.
                                 </p>
@@ -165,9 +166,10 @@
         </div>
     </section>
     <section>
-        @livewire('contentmanager.general-carousel')
+        @livewire('contentmanager.general-carousel',['limit'=>5, 'randomize'=>true])
     </section>
-    <section class="pt-4 items-center h-32 px-4 sm:px-48 text-black">
+
+    <section class="pt-4 items-center h-32 px-4 sm:px-48 text-white bg-black">
         <div class="z-10 w-full px-4 sm:px-8 flex flex-col lg:flex-row justify-between items-center gap-4">
             <div class="group flex flex-row justify-between items-center gap-4 sm:gap-8">
                 <h1
@@ -192,7 +194,7 @@
         </div>
     </section>
 
-    <section id="divisi" class="h-auto justify-center items-center flex flex-col gap-8 w-full bg-white text-black">
+    <section id="divisi" class="h-auto justify-center items-center flex flex-col gap-8 w-full bg-black text-white">
         <div data-aos="fade-up" class="items-center flex justify-center flex-col px-24">
             <h1 class="text-4xl lg:text-6xl font-bold">Divisi</h1>
             <span class="font-semibold text-center mt-8">UKM ASSEM sendiri memiliki 5 divisi pengkaryaan yang meliputi
@@ -227,7 +229,7 @@
             class="flex lg:hidden flex-wrap gap-4 justify-center px-2 mx-auto sm:grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
         </div>
     </section>
-    <section class="py-12 bg-white">
+    <section class="pt-12 bg-black">
         @livewire('contentmanager.karya-carousel')
     </section>
     <section id="proker"
@@ -252,11 +254,9 @@
             <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-red-500 opacity-50 to-transparent"
                 style="mask-image: radial-gradient(circle at 75% 50%, rgba(75, 0, 130, 1) 2%, rgba(0, 0, 0, 0) 10%);">
             </div>
-            @livewire('contentmanager.proker-card', ['proker' => 'mainproker', 'all'=> true , 'randomize' => true])
+            @livewire('contentmanager.proker-card', ['proker' => 'mainproker', 'all' => true, 'randomize' => true])
         </div>
     </section>
-
-
 
     <section class="py-12 bg-white text-black " id="contact">
 
@@ -374,13 +374,13 @@
     </section>
     <x-custom.footer></x-custom.footer>
     <script>
-    // Periksa apakah pengguna sudah pernah mengunjungi halaman sebelumnya
-    if (!localStorage.getItem('visited')) {
-        // Jika belum, arahkan ke /splash
-        localStorage.setItem('visited', 'true'); // Tandai bahwa pengunjung sudah datang
-        window.location.href = "/splash"; // Mengarahkan ke halaman splash
-    }
-</script>
+        // Periksa apakah pengguna sudah pernah mengunjungi halaman sebelumnya
+        if (!localStorage.getItem('visited')) {
+            // Jika belum, arahkan ke /splash
+            localStorage.setItem('visited', 'true'); // Tandai bahwa pengunjung sudah datang
+            window.location.href = "/splash"; // Mengarahkan ke halaman splash
+        }
+    </script>
 
 </body>
 

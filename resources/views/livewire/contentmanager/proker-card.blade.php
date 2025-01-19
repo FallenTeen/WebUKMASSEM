@@ -1,6 +1,7 @@
 <!-- list Parameter
 'proker' => 'mainproker',
 'proker' => 'allproker',
+'proker' => '[nama_proker]'
 'limit' => 123,
 'all'=> true/false
 'randomize'
@@ -8,7 +9,7 @@
 
 <div class="{{ $containerClass }}">
 @foreach ($prokers as $proker)
-    <article x-data="{ hovered: false }" 
+    <a href="{{ $proker->url }}" x-data="{ hovered: false }" 
         @mouseenter="hovered = true" 
         @mouseleave="hovered = false" 
         class="relative lg:w-96 w-48 overflow-hidden rounded-2xl px-4 sm:px-8 pb-8 pt-40 mt-12 transition-transform transform hover:-translate-y-4 duration-400">
@@ -32,6 +33,6 @@
             :class="{ 'opacity-100 translate-y-0': hovered, 'opacity-0 translate-y-4': !hovered }">
             {{ $proker->deskripsi }}
         </div>
-    </article>
+    </a>
     @endforeach
 </div>

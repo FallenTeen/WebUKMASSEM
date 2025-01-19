@@ -2,7 +2,8 @@
     <div
         class="absolute duration-1000 w-full h-full [transform-style:preserve-3d] group-hover:[transform:rotateX(180deg)]">
         <!-- Front Side with Gradient and Background Image -->
-        <div class="absolute w-full h-full rounded-xl p-6 text-white [backface-visibility:hidden]" style="background-image: url('{{ $backgroundImageFront }}'), linear-gradient(to bottom right, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7));
+        <div class="absolute w-full h-full rounded-xl p-6 text-white [backface-visibility:hidden]" style="background-image: url('{{ $backgroundImageFront }}'), linear-gradient(to bottom, rgba(128, 128, 128, 1), rgba(0, 0, 0, 1))
+;
  background-size: contain; background-position: center; background-repeat: no-repeat;">
             <div class="flex flex-col h-full">
                 <div class="flex justify-between items-start">

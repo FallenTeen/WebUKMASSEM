@@ -38,8 +38,8 @@ new #[Layout('layouts.guest')] class extends Component
 
 <div>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Lupa Sandi Kamu? Kamu bisa chat whatsapp') }}
-        <a href="https://wa.me/6285156208507" class="text-blue-500 hover:underline">Di sini</a>
+        {{ __('Lupa Sandi Kamu? Kamu bisa chat whatsapp admin') }}
+        <a href="https://wa.me/6285156208507" class="text-blue-500 hover:underline">di sini</a>
         {{ __('Atau Bisa juga isi form berikut untuk mendapatkan bantuan reset password dari atmint ganteng') }}
     </div>
 
