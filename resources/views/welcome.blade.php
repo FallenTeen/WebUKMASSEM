@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <link rel="preload" href="{{ asset('icons/assem.png') }}" as="image">
+    <link rel="preload" href="{{ asset('images/bg-1.JPG') }}" as="image">
+
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -249,13 +252,7 @@
             <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-red-500 opacity-50 to-transparent"
                 style="mask-image: radial-gradient(circle at 75% 50%, rgba(75, 0, 130, 1) 2%, rgba(0, 0, 0, 0) 10%);">
             </div>
-
-            @livewire('contentmanager.proker-card')
-            @livewire('contentmanager.proker-card')
-            @livewire('contentmanager.proker-card')
-            @livewire('contentmanager.proker-card')
-            @livewire('contentmanager.proker-card')
-
+            @livewire('contentmanager.proker-card', ['proker' => 'mainproker', 'all'=> true , 'randomize' => true])
         </div>
     </section>
 
@@ -376,6 +373,15 @@
         </div>
     </section>
     <x-custom.footer></x-custom.footer>
+    <script>
+    // Periksa apakah pengguna sudah pernah mengunjungi halaman sebelumnya
+    if (!localStorage.getItem('visited')) {
+        // Jika belum, arahkan ke /splash
+        localStorage.setItem('visited', 'true'); // Tandai bahwa pengunjung sudah datang
+        window.location.href = "/splash"; // Mengarahkan ke halaman splash
+    }
+</script>
+
 </body>
 
 </html>

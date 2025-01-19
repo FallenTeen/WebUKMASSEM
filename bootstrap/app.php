@@ -13,6 +13,8 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withMiddleware(function ($middleware) {
         $middleware->alias([
             'role' => \App\Http\Middleware\CheckRole::class,
+            'cache.page' => \App\Http\Middleware\CachePage::class,
+            'first.visit' => \App\Http\Middleware\RedirectIfFirstVisit::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

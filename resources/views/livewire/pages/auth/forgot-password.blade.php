@@ -38,7 +38,9 @@ new #[Layout('layouts.guest')] class extends Component
 
 <div>
     <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+        {{ __('Lupa Sandi Kamu? Kamu bisa chat whatsapp') }}
+        <a href="https://wa.me/6285156208507" class="text-blue-500 hover:underline">Di sini</a>
+        {{ __('Atau Bisa juga isi form berikut untuk mendapatkan bantuan reset password dari atmint ganteng') }}
     </div>
 
     <!-- Session Status -->
@@ -54,7 +56,7 @@ new #[Layout('layouts.guest')] class extends Component
 
         <div class="flex items-center justify-end mt-4">
             <x-primary-button>
-                {{ __('Email Password Reset Link') }}
+                {{ __('Kirim E-Mail Pemulihan') }}
             </x-primary-button>
         </div>
     </form>

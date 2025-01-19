@@ -32,7 +32,7 @@ new #[Layout('layouts.guest')] class extends Component
     <form wire:submit="login">
     <!-- Email or Username -->
     <div>
-        <x-input-label for="emailOrUsername" :value="__('Email or Username')" />
+        <x-input-label for="emailOrUsername" :value="__('Email atau Username')" />
         <x-text-input wire:model="form.emailOrUsername" id="emailOrUsername" class="block mt-1 w-full" type="text" name="emailOrUsername" required autofocus autocomplete="username" />
         <x-input-error :messages="$errors->get('form.emailOrUsername')" class="mt-2" />
     </div>
@@ -53,14 +53,14 @@ new #[Layout('layouts.guest')] class extends Component
     <div class="block mt-4">
         <label for="remember" class="inline-flex items-center">
             <input wire:model="form.remember" id="remember" type="checkbox" class="rounded dark:bg-gray-900 border-gray-300 dark:border-gray-700 text-indigo-600 shadow-sm focus:ring-indigo-500 dark:focus:ring-indigo-600 dark:focus:ring-offset-gray-800" name="remember">
-            <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Remember me') }}</span>
+            <span class="ms-2 text-sm text-gray-600 dark:text-gray-400">{{ __('Ingat Data Login') }}</span>
         </label>
     </div>
 
     <div class="flex items-center justify-end mt-4">
         @if (Route::has('password.request'))
             <a class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('password.request') }}" wire:navigate>
-                {{ __('Forgot your password?') }}
+                {{ __('Lupa Sandi?') }}
             </a>
         @endif
 

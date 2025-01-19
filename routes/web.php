@@ -16,8 +16,9 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/ketum/dashboard', 'livewire.pages.ketum.dashboard')->name('ketum.dashboard')->middleware('role:ketum');
 });
 
-Route::view('/', 'welcome')->name('welcome');
-Route::view('/sejarah', 'livewire.front.sejarah')->name('sejarah');
+Route::view('/splash', 'splash')->name('splash')->middleware('cache.page');
+Route::view('/', 'welcome')->middleware('first.visit')->name('welcome');
+Route::view('/sejarah', 'livewire.front.sejarah')->name('sejarah')->middleware('cache.page');
 Route::view('/galeri', 'livewire.front.gallery')->name('gallery');
 Route::view('/musik', 'divisi.index-musik')->name('index.musik');
 Route::view('/foto', 'divisi.index-foto')->name('index.foto');
