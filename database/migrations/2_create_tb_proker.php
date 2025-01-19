@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->json('gambardesk')->nullable();
             $table->enum('kategori', ['primer', 'sekunder'])->default('sekunder');
             $table->json('tags')->nullable();
+            $table->string('url')->nullable();
 
             $table->unsignedBigInteger('main_proker_id');
             $table->foreign('main_proker_id')->references('id')->on('tb_main_proker')->onDelete('cascade');

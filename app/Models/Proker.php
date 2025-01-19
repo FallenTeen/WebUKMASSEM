@@ -16,6 +16,7 @@ class Proker extends Model
         'gambar',
         'gambardesk',
         'kategori',
+        'url',
         'tags',
     ];
 

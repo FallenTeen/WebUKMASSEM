@@ -15,6 +15,7 @@ return Application::configure(basePath: dirname(__DIR__))
             'role' => \App\Http\Middleware\CheckRole::class,
             'cache.page' => \App\Http\Middleware\CachePage::class,
             'first.visit' => \App\Http\Middleware\RedirectIfFirstVisit::class,
+            'verUser' => \App\Http\Middleware\CheckVerifiedUser::class,
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

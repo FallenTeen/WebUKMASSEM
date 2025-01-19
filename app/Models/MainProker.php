@@ -10,7 +10,14 @@ class MainProker extends Model
     use HasFactory;
     protected $table = 'tb_main_proker';
 
-   public function prokers()
+    protected $fillable = [
+        'deskripsi',
+        'gambar',
+        'gambardesk',
+        'url',
+    ];
+
+    public function prokers()
     {
         return $this->hasMany(Proker::class, 'main_proker_id');
     }

@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','verUser'])->group(function () {
     Route::get('/dashboard', function () {
         $role = auth()->user()->anggota->role;
         if ($role) {
