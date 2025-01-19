@@ -1,7 +1,7 @@
 <article x-data="{ hovered: false }" 
     @mouseenter="hovered = true" 
     @mouseleave="hovered = false" 
-    class="relative lg:w-96 w-48 overflow-hidden rounded-2xl px-4 sm:px-8 pb-8 pt-40 mt-24 transition-transform transform hover:-translate-y-4 duration-400">
+    class="relative lg:w-96 w-48 overflow-hidden rounded-2xl px-4 sm:px-8 pb-8 pt-40 mt-4 transition-transform transform hover:-translate-y-4 duration-400">
     
     <!-- Background Image -->
     <img src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="University of Southern California"

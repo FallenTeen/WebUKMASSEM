@@ -22,17 +22,51 @@
         </div>
 
         <div class="hidden lg:flex h-12 items-center font-semibold font-poppins">
-            <a href="#landing"
-                class="mx-4 scroll-link relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
+            <a href="#landing" x-data="{
+      currentRoute: window.location.pathname,
+      redirectToWelcome() {
+          if (this.currentRoute !== '/') {
+              window.location.href = '{{ route('welcome') }}'; // Redirect to /welcome
+          } else {
+              window.location.hash = '#landing'; // Scroll to #home if on /welcome
+          }
+      }
+   }" @click.prevent="redirectToWelcome()"
+                class="mx-4 relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
+
                 Home
             </a>
-            <a href="#sejarah"
-                class="mx-4 scroll-link relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
+
+            <a href="{{ route('sejarah') }}"
+                class="mx-4 relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
                 Sejarah
             </a>
+
+            <a href="{{ route('gallery') }}" x-data="{
+      currentRoute: window.location.pathname,
+      redirectToWelcome() {
+          if (this.currentRoute !== '/galeri') {
+              window.location.href = '{{ route('gallery') }}'; // Redirect to /welcome
+          } else {
+              window.location.hash = '#gallery'; // Scroll to #home if on /welcome
+          }
+      }
+   }" @click.prevent="redirectToWelcome()"
+                class="mx-4 relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110">
+                Galeri
+            </a>
             <div class="relative group">
-                <a href="#divisi"
-                    class="mx-4 scroll-link relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110 group-hover:text-red-600">
+                <a href="#divisi" x-data="{
+      currentRoute: window.location.pathname,
+      redirectToWelcome() {
+          if (this.currentRoute !== '/') {
+              window.location.href = '{{ route('welcome') }}#divisi';
+          } else {
+              window.location.hash = '#gallery'; // Scroll to #home if on /welcome
+          }
+      }
+   }" @click.prevent="redirectToWelcome()"
+                    class="mx-4 relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110 group-hover:text-red-600">
                     Divisi
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 ml-1" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -42,19 +76,19 @@
                 </a>
 
                 <div class="absolute left-0 w-40 hidden group-hover:block bg-white shadow-lg rounded-md py-2 mt-0 z-10">
-                    <a href="#divisi2" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="{{ route('index.film') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎥</span> Film
                     </a>
-                    <a href="#divisi5" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="{{ route('index.foto') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">📸</span> Fotografi
                     </a>
-                    <a href="#divisi3" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="{{ route('index.musik') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎶</span> Musik
                     </a>
-                    <a href="#divisi4" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="{{ route('index.teater') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎭</span> Teater
                     </a>
-                    <a href="#divisi6" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="{{ route('index.tari') }}" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">💃</span> Tari
                     </a>
                 </div>
@@ -62,7 +96,7 @@
 
             <div class="relative group">
                 <a href="#proker"
-                    class="mx-4 scroll-link relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110 group-hover:text-red-600">
+                    class="mx-4 relative text-black hover:text-red-600 transition duration-300 ease-in-out before:absolute before:w-full before:scale-x-0 before:h-[2px] before:bottom-0 before:left-0 before:bg-red-600 before:origin-right hover:before:scale-x-100 hover:before:origin-left before:transition before:duration-300 hover:scale-110 group-hover:text-red-600">
                     Program Kerja
                     <svg xmlns="http://www.w3.org/2000/svg" class="inline-block w-4 h-4 ml-1" viewBox="0 0 24 24"
                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -97,10 +131,10 @@
                         <span class="mr-2">🕌</span> ASSEM Lebaran
                     </a>
 
-                    <h3 class="px-4 py-2 font-bold text-gray-800">KARYA</h3>
+                    <!-- <h3 class="px-4 py-2 font-bold text-gray-800">KARYA</h3>
                     <a href="#karya" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🖼️</span> Karya
-                    </a>
+                    </a> -->
                 </div>
             </div>
         </div>
@@ -124,9 +158,10 @@
             </a>
             <div
                 class="bg-gradient-to-r from-red-700 to-red-400 w-fit rounded-md items-center flex hover:scale-105 duration-300 border hover:border-white border-black">
-                <a href="https://wa.me/6285156208507" target="_blank">
-                    <div class="text-white px-4 ">Hubungi Kami</div>
+                <a href="{{ route('welcome') }}#contact" class="scroll-link">
+                    <div class="text-white px-4">Hubungi Kami</div>
                 </a>
+
             </div>
         </div>
     </div>
@@ -140,17 +175,57 @@
                     d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
             </svg>
 
-            <a href="#landing" class="block px-2 py-2 text-black hover:text-red-600">Home</a>
+            <a href="#landing" x-data="{
+      currentRoute: window.location.pathname,
+      redirectToWelcome() {
+          if (this.currentRoute !== '/') {
+              window.location.href = '{{ route('welcome') }}'; // Redirect to /welcome
+          } else {
+              window.location.hash = '#landing'; // Scroll to #home if on /welcome
+          }
+      }
+   }" @click.prevent="redirectToWelcome()" class="block px-2 py-2 text-black hover:text-red-600">Home</a>
         </div>
 
         <div class="flex items-center text-black hover:text-red-600">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1"
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                 stroke="currentColor" class="size-6">
                 <path stroke-linecap="round" stroke-linejoin="round"
-                    d="m2.25 12 8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25" />
+                    d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
             </svg>
 
-            <a href="#deskripsi" class="block px-2 py-2 text-black hover:text-red-600">Sejarah</a>
+
+            <a x-data="{
+      currentRoute: window.location.pathname,
+      redirectToWelcome() {
+          if (this.currentRoute !== '/sejarah') {
+              window.location.href = '{{ route('sejarah') }}'; // Redirect to /welcome
+          } else {
+              window.location.hash = '#sejarah'; // Scroll to #home if on /welcome
+          }
+      }
+   }" @click.prevent="redirectToWelcome()" href="#sejarah"
+                class="block px-2 py-2 text-black hover:text-red-600">Sejarah</a>
+        </div>
+
+        <div class="flex items-center text-black hover:text-red-600">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                stroke="currentColor" class="size-6">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                    d="m2.25 15.75 5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 0 0 1.5-1.5V6a1.5 1.5 0 0 0-1.5-1.5H3.75A1.5 1.5 0 0 0 2.25 6v12a1.5 1.5 0 0 0 1.5 1.5Zm10.5-11.25h.008v.008h-.008V8.25Zm.375 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" />
+            </svg>
+
+
+            <a href="#gallery" x-data="{
+      currentRoute: window.location.pathname,
+      redirectToWelcome() {
+          if (this.currentRoute !== '/galeri') {
+              window.location.href = '{{ route('gallery') }}';
+          } else {
+              window.location.hash = '#gallery';
+          }
+      }
+   }" @click.prevent="redirectToWelcome()" class="block px-2 py-2 text-black hover:text-red-600">Gallery</a>
         </div>
 
         <div class="flex items-center text-black hover:text-red-600">
@@ -193,7 +268,7 @@
             </a>
             <div
                 class="bg-gradient-to-r from-red-700 to-red-400 w-fit rounded-md items-center flex hover:scale-105 duration-300 border hover:border-white border-black">
-                <a href="https://wa.me/6285156208507" target="_blank">
+                <a href="{{ route('welcome') }}#contact" target="_blank">
                     <div class="text-white px-4 ">Hubungi Kami</div>
                 </a>
             </div>

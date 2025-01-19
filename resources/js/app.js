@@ -11,6 +11,7 @@ window.onload = function () {
     AOS.refresh();
 };
 
+
 document.addEventListener("DOMContentLoaded", () => {
     AOS.init({
         duration: 800,
@@ -19,25 +20,39 @@ document.addEventListener("DOMContentLoaded", () => {
         offset: -5,
     });
 
+    const targetId = window.location.hash.slice(1); // Ambil hash tanpa "#"
+    if (targetId) {
+        const targetElement = document.getElementById(targetId);
+        if (targetElement) {
+            // Gunakan smoothScroll jika elemen ditemukan
+            smoothScroll(targetElement);
+        }
+    }
     // Smooth scrolling with ease-in-out
-    const scrollLinks = document.querySelectorAll("a.scroll-link");
+    // Select all anchor links with href starting with "#"
+    const anchorLinks = document.querySelectorAll('a[href*="#"]');
 
-    scrollLinks.forEach((link) => {
+    anchorLinks.forEach((link) => {
         link.addEventListener("click", (e) => {
-            e.preventDefault(); // Prevent default anchor behavior
-
-            const targetId = link.getAttribute("href").slice(1); // Get target ID without "#"
-            const targetElement = document.getElementById(targetId);
-
-            if (targetElement) {
-                smoothScroll(targetElement); // Call custom smooth scroll
+            const href = link.getAttribute("href");
+            if (href.startsWith("#")) {
+                e.preventDefault(); // Smooth scroll untuk hash di halaman yang sama
+                const targetId = href.slice(1);
+                const targetElement = document.getElementById(targetId);
+                if (targetElement) {
+                    smoothScroll(targetElement);
+                }
+            } else if (href.includes("#")) {
+                e.preventDefault(); // Untuk hash di halaman lain
+                const [url, hash] = href.split("#");
+                window.location.href = `${url}#${hash}`;
             }
         });
     });
 
     // Custom smooth scroll function with ease-in-out
     function smoothScroll(target) {
-        const offset = -60; // Offset value to move scroll down slightly (can adjust as needed)
+        const offset = -60; // Offset value to adjust scroll position
         const targetPosition =
             target.getBoundingClientRect().top + window.scrollY + offset;
         const startPosition = window.scrollY;

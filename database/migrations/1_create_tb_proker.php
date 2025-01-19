@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('tb_proker', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->enum('proker',['fisma','ave','aos','mistik','penpro','redcarpet','ldoa','lain']);
+            $table->enum('proker',['fisma','ave','aos','mistik','asleb','penpro','redcarpet','ldoa','lain']);
             $table->text('deskripsi')->nullable();
             $table->string('gambar')->nullable();
             $table->json('gambardesk')->nullable();

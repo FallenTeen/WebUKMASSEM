@@ -17,11 +17,13 @@ Route::middleware(['auth'])->group(function () {
 });
 
 Route::view('/', 'welcome')->name('welcome');
-Route::view('/musik', 'livewire.divisi.index-musik')->name('index.musik');
-Route::view('/foto', 'livewire.divisi.index-foto')->name('index.foto');
-Route::view('/film', 'livewire.divisi.index-film')->name('index.film');
-Route::view('/tari', 'livewire.divisi.index-tari')->name('index.tari');
-Route::view('/teater', 'livewire.divisi.index-teater')->name('index.teater');
+Route::view('/sejarah', 'livewire.front.sejarah')->name('sejarah');
+Route::view('/galeri', 'livewire.front.gallery')->name('gallery');
+Route::view('/musik', 'divisi.index-musik')->name('index.musik');
+Route::view('/foto', 'divisi.index-foto')->name('index.foto');
+Route::view('/film', 'divisi.index-film')->name('index.film');
+Route::view('/tari', 'divisi.index-tari')->name('index.tari');
+Route::view('/teater', 'divisi.index-teater')->name('index.teater');
 
 
 Route::view('profile', 'profile')

@@ -4,19 +4,16 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>UKM ASSEM</title>
-
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-
-    <!--ANIMATE ON SCROLL-->
-    <link href="{{ mix('css/app.css') }}" rel="stylesheet">
+    <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- GAPAKE INI COY -->
+    <!-- <link href="{{ mix('css/app.css') }}" rel="stylesheet"> -->
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased font-Poppin">
+<body class="antialiased font-Poppin" loading="lazy">
 
     <x-custom.navbar></x-custom.navbar>
 
@@ -57,7 +54,7 @@
                         </a>
                     </div>
 
-                    <a href="#"
+                    <a href="https://www.youtube.com/@ASSEMOfficial" target="_blank"
                         class="flex items-center justify-center w-16 h-16 text-white font-semibold text-lg rounded-full bg-gradient-to-r from-red-300 to-red-400 hover:from-red-300 hover:to-red-500 duration-300 hover:scale-110">
                         <div class="flex items-center justify-center">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -117,9 +114,9 @@
                             doloremque, fugiat illum magni minus nisi nulla numquam obcaecati placeat quia, repellat
                             tempore voluptatum.
                         </p>
-                        <div
+                        <div data-aos="fade-left"
                             class="mt-10 bg-gradient-to-r from-red-700 to-red-400 w-fit rounded-xl items-center flex hover:scale-105 duration-300 hover:from-red-300 hover:to-red-500">
-                            <a href="#sejarah" class="scroll-link">
+                            <a href="{{ route('sejarah') }}">
                                 <div class="flex items-center text-white px-6 py-4 gap-2">
                                     <div class="text-white font-bold">Baca Selengkapnya </div>
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -145,7 +142,7 @@
                         <h2 data-aos="fade-right" data-aos-delay="200" class="my-4 font-bold text-4xl lg:text-6xl">
                             VISI Dan MISI <span class="text-merah">UKM ASSEM</span>
                         </h2>
-                        <div class="flex gap-24">
+                        <div class="flex gap-12 lg:gap-24">
                             <div class="flex flex-col text-start gap-4">
                                 <h1 data-aos="fade-right" class="text-2xl font-bold">VISI</h1>
                                 <p data-aos="fade-right" data-aos-delay="300" class="text-gray-700">
@@ -167,10 +164,9 @@
         </div>
     </section>
     <section>
-        <x-custom.general-carousel></x-custom.general-carousel>
+        @livewire('contentmanager.general-carousel')
     </section>
-    <section
-        class="pt-4 h-auto sm:h-72 px-4 pb-48 lg:pb-0 sm:px-48 text-black bg-gradient-to-b from-white via-white/90 to-black">
+    <section class="pt-4 items-center h-32 px-4 sm:px-48 text-black">
         <div class="z-10 w-full px-4 sm:px-8 flex flex-col lg:flex-row justify-between items-center gap-4">
             <div class="group flex flex-row justify-between items-center gap-4 sm:gap-8">
                 <h1
@@ -195,12 +191,13 @@
         </div>
     </section>
 
-    <section id="divisi" class="h-auto justify-center items-center flex flex-col gap-8 w-full bg-black text-white">
-        <di data-aos="fade-up" data-aos-delay="200" class="items-center flex justify-center flex-col px-24">
+    <section id="divisi" class="h-auto justify-center items-center flex flex-col gap-8 w-full bg-white text-black">
+        <div data-aos="fade-up" class="items-center flex justify-center flex-col px-24">
             <h1 class="text-4xl lg:text-6xl font-bold">Divisi</h1>
             <span class="font-semibold text-center mt-8">UKM ASSEM sendiri memiliki 5 divisi pengkaryaan yang meliputi
                 Divisi Musik, Divisi Fotografi, Divisi Film, Divisi Tari, dan Divisi Teater</span>
-        </di>
+        </div>
+
 
         <div data-aos="fade-up"
             class="lg:flex hidden flex-wrap gap-4 justify-center px-2 mx-auto sm:grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
@@ -227,33 +224,46 @@
 
         <div data-aos="fade-up"
             class="flex lg:hidden flex-wrap gap-4 justify-center px-2 mx-auto sm:grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            <!--BUAT ANDRO-->
         </div>
     </section>
-    <section class="py-12 bg-black">
-        <x-custom.karya-carousel></x-custom.karya-carousel>
+    <section class="py-12 bg-white">
+        @livewire('contentmanager.karya-carousel')
     </section>
     <section id="proker"
-        class="pt-8 h-auto justify-center items-center flex flex-col gap-2 w-full bg-black text-white pb-6">
-        <div class="items-center flex justify-center flex-col px-24" data-aos="fade-up" data-aos-delay="500">
+        class="pt-8 h-auto justify-center items-center flex flex-col gap-2 w-full bg-white text-black pb-6">
+        <div class="items-center flex justify-center flex-col px-24" data-aos="fade-up">
             <h1 class="text-4xl lg:text-6xl font-bold">Program Kerja</h1>
             <span class="font-semibold text-center mt-8">UKM ASSEM sendiri memiliki beberapa program kerja yang meliputi
                 semua divisi yang ada di UKM ASSEM beberapa diantaranya dapat dilihat disini</span>
         </div>
 
         <div data-aos="fade-up" class="flex flex-wrap gap-3 justify-center">
-            <x-custom.prokercard />
-            <x-custom.prokercard />
-            <x-custom.prokercard />
-            <x-custom.prokercard />
-            <x-custom.prokercard />
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-indigo-500 opacity-50 to-transparent"
+                style="mask-image: radial-gradient(circle at 15% 55%, rgba(75, 0, 130, 1) 5%, rgba(0, 0, 0, 0) 13%);">
+            </div>
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-red-500 opacity-50 to-transparent"
+                style="mask-image: radial-gradient(circle at 10% 50%, rgba(75, 0, 130, 1) 1%, rgba(0, 0, 0, 0) 8%);">
+            </div>
+
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-indigo-500 opacity-50 to-transparent"
+                style="mask-image: radial-gradient(circle at 85% 55%, rgba(75, 0, 130, 1) 5%, rgba(0, 0, 0, 0) 13%);">
+            </div>
+            <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-red-500 opacity-50 to-transparent"
+                style="mask-image: radial-gradient(circle at 75% 50%, rgba(75, 0, 130, 1) 2%, rgba(0, 0, 0, 0) 10%);">
+            </div>
+
+            @livewire('contentmanager.proker-card')
+            @livewire('contentmanager.proker-card')
+            @livewire('contentmanager.proker-card')
+            @livewire('contentmanager.proker-card')
+            @livewire('contentmanager.proker-card')
 
         </div>
     </section>
 
 
 
-    <section class="py-12 text-white bg-black " id="contact">
+    <section class="py-12 bg-white text-black " id="contact">
 
         <div class="flex justify-center">
             <div class="text-center md:max-w-xl lg:max-w-3xl">
@@ -280,10 +290,10 @@
                             </div>
                             <div class="ml-6 grow">
                                 <p class="mb-2 font-bold ">ASSEM OFFICIAL</p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     assem.amikompurwokerto@gmail.com
                                 </p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     +62 xxxxxx
                                 </p>
                             </div>
@@ -304,10 +314,10 @@
                                 <p class="mb-2 font-bold ">
                                     Humas
                                 </p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     Humas@gmail.com
                                 </p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     +62 xxxxxxx
                                 </p>
                             </div>
@@ -329,10 +339,10 @@
                                 <p class="mb-2 font-bold">
                                     Kerumahtanggaan
                                 </p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     rt@gmail.com
                                 </p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     +62 xxxxx
                                 </p>
                             </div>
@@ -353,10 +363,10 @@
                                 <p class="mb-2 font-bold">
                                     Bug report
                                 </p>
-                                <p class="text-neutral-500 ">
+                                <p class="text-neutral-600 ">
                                     vlamingvlaming0@gmail.com
                                 </p>
-                                <p class="text-neutral-500">
+                                <p class="text-neutral-600">
                                     +62 851 5620 8507
                                 </p>
                             </div>

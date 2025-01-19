@@ -26,7 +26,7 @@
                     <h2 class="text-lg font-bold">Navigasi</h2>
                     <ul>
                         <li><a href="#landing" class="hover:underline">Beranda</a></li>
-                        <li><a href="https://wa.me/6285156208507" target="_blank" class="hover:underline">Kontak</a>
+                        <li><a href="{{ route('welcome') }}#contact" target="_blank" class="hover:underline">Kontak</a>
                         </li>
                     </ul>
                 </div>
@@ -34,7 +34,7 @@
                     <h2 class="text-lg font-bold">Ikuti Kami</h2>
                     <div class="flex space-x-4 items-center">
                         <a href="https://www.tiktok.com/@assem.official" class="group">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40"
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="auto" height="40"
                                 viewBox="0,0,256,256">
                                 <g fill="#ffffff" class="group-hover:fill-red-300 transition-colors duration-300"
                                     fill-rule="nonzero">
@@ -49,7 +49,7 @@
 
                         <!-- YouTube -->
                         <a href="https://www.youtube.com/@ASSEMOfficial" class="hover:text-red-600 group">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40"
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="auto" height="45"
                                 viewBox="0,0,256,256">
                                 <g fill="#ffffff" class="group-hover:fill-red-300" fill-rule="nonzero" stroke="none"
                                     stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
@@ -67,7 +67,7 @@
 
                         <!-- Instagram -->
                         <a href="https://www.instagram.com/assem_assik/" class="hover:text-red-600 group">
-                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="40" height="40"
+                            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="" height="45"
                                 viewBox="0,0,256,256">
                                 <g fill="#ffffff" class="group-hover:fill-red-300" fill-rule="nonzero" stroke="none"
                                     stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter"
@@ -105,7 +105,6 @@
 
 
 
-
     <div class="container mx-auto px-4 lg:hidden sm:flex sm:flex-col">
         <div class="flex flex-col  justify-evenly px-1">
             <div class="flex flex-row justify-between">
@@ -113,7 +112,7 @@
                     <h2 class="text-lg font-bold">Navigasi</h2>
                     <ul>
                         <li><a href="#landing" class="hover:underline">Beranda</a></li>
-                        <li><a href="https://wa.me/6285156208507" target="_blank" class="hover:underline">Kontak</a>
+                        <li><a href="{{ route('welcome') }}#contact" target="_blank" class="hover:underline">Kontak</a>
                         </li>
                     </ul>
                 </div>
