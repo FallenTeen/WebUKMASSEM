@@ -19,6 +19,7 @@ return new class extends Migration {
             $table->json('gambardesk')->nullable();
             $table->enum('kategori', ['primer', 'sekunder'])->default('sekunder');
             $table->json('tags')->nullable();
+            $table->date('tanggal')->nullable();
             $table->string('url')->nullable()->default('test');
 
             $table->unsignedBigInteger('main_proker_id');

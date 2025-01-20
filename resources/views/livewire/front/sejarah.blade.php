@@ -11,11 +11,11 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased font-Poppin">
+<body class="antialiased font-Poppins">
 
     <x-custom.navbar></x-custom.navbar>
 
-    <section id="sejarah" class="h-full flex flex-col pt-16 gap-16 justify-center items-center bg-black text-white relative">
+    <section id="sejarah" class="h-full flex flex-col pt-20 gap-16 justify-center items-center bg-black text-white relative">
         <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-indigo-500 opacity-50 to-transparent"
             style="mask-image: radial-gradient(circle at 15% 55%, rgba(75, 0, 130, 1) 5%, rgba(0, 0, 0, 0) 13%);">
         </div>

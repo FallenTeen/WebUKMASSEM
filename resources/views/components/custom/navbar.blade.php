@@ -1,4 +1,4 @@
-<nav class="navbar fixed w-full bg-white shadow-lg p-4 duration-300 z-30" id="mainnav">
+<nav class="navbar fixed w-full bg-white shadow-lg p-4 duration-300 z-30 font-Poppins" id="mainnav">
     <div class="mx-4 flex justify-between items-center">
         <div class="hidden lg:flex h-12 w-1/4 items-center">
             <img src="{{ asset('icons/assem.png') }}"

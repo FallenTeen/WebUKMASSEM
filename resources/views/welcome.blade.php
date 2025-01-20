@@ -14,7 +14,7 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="antialiased font-Poppin" loading="lazy">
+<body class="antialiased font-Poppins" loading="lazy">
 
     <x-custom.navbar></x-custom.navbar>
 
@@ -166,7 +166,7 @@
         </div>
     </section>
     <section>
-        @livewire('contentmanager.general-carousel',['limit'=>5, 'randomize'=>true])
+        @livewire('contentmanager.general-carousel', ['limit' => 5, 'randomize' => true])
     </section>
 
     <section class="pt-4 items-center h-32 px-4 sm:px-48 text-white bg-black">

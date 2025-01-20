@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Proker extends Model
 {
     use HasFactory;
-    protected $table = 'tb_proker';
+protected $table = 'tb_proker';
     protected $fillable = [
         'main_proker_id',
         'judul',
@@ -18,6 +18,7 @@ class Proker extends Model
         'gambardesk',
         'kategori',
         'url',
+        'tanggal',
         'tags',
     ];
 
