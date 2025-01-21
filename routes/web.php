@@ -2,8 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Livewire;
 
-Route::middleware(['auth','verUser'])->group(function () {
+Route::middleware(['auth', 'verUser'])->group(function () {
     Route::get('/dashboard', function () {
         $role = auth()->user()->anggota->role;
         if ($role) {
@@ -26,9 +27,13 @@ Route::view('/film', 'divisi.index-film')->name('index.film');
 Route::view('/tari', 'divisi.index-tari')->name('index.tari');
 Route::view('/teater', 'divisi.index-teater')->name('index.teater');
 
+Route::get('/main-proker/{proker}', App\Livewire\Contentmanager\MainProkerArticle::class)->name('mainproker.show');
+Route::get('/proker/{id}', [\App\Livewire\Contentmanager\ProkerArticle::class])->name('proker.show');
+Route::get('/karya/{id}', [\App\Livewire\Contentmanager\KaryaArticle::class])->name('karya.show');
+
 
 Route::view('profile', 'profile')
-    ->middleware(['auth','verUser'])
+    ->middleware(['auth', 'verUser'])
     ->name('profile');
 
 Route::get('/logout', function () {

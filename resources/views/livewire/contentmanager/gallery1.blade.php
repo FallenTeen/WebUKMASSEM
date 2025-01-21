@@ -17,7 +17,7 @@
 
 
             <!-- Reset Button -->
-            <button type="button" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
+            <button wire:click="loadMore" type="button" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12">

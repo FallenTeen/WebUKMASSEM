@@ -26,8 +26,9 @@
                     <h3 class="w-full lg:w-[80%] text-balance text-2xl lg:text-3xl font-bold text-white">{{ $item->judul }}
                     </h3>
                     <p class="lg:w-1/2 w-full text-pretty text-sm text-neutral-300 line-clamp-3">{{$item->deskripsi}}</p>
+                    <!-- MISAL ERROR PAKE INI BUAT HREF DIBAWAHNYA -->
                     <a class="text-white rounded-full border px-4 py-2 border-5 hover:bg-white hover:text-black duration-300 border-white"
-                        href="{{ $item->url }}" target="_blank">Lihat lebih lanjut {{ $item->judul }}</a>
+                        href="{{ route('karya.show', ['id' => $item->id]) }}" target="_blank">Lihat lebih lanjut {{ $item->judul }}</a>
                 </div>
                 <img src="{{ $item->gambar }}" class="w-full h-full object-center object-cover" alt="">
             </div>

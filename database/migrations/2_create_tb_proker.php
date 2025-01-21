@@ -20,7 +20,6 @@ return new class extends Migration {
             $table->enum('kategori', ['primer', 'sekunder'])->default('sekunder');
             $table->json('tags')->nullable();
             $table->date('tanggal')->nullable();
-            $table->string('url')->nullable()->default('test');
 
             $table->unsignedBigInteger('main_proker_id');
             $table->foreign('main_proker_id')->references('id')->on('tb_main_proker')->onDelete('cascade');

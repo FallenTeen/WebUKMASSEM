@@ -3,11 +3,10 @@
 namespace App\Livewire\Contentmanager;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\DB;
+use App\Models\Proker;
 
 class KaryaCarousel extends Component
 {
-
     public $items;
     public $limit;
     public $randomize;
@@ -16,7 +15,7 @@ class KaryaCarousel extends Component
     {
         $this->limit = $limit;
         $this->randomize = $randomize;
-        $query = DB::table('tb_proker')->where('judul', '!=', 'lain');
+        $query = Proker::query()->where('judul', '!=', 'lain');
 
         if ($this->randomize) {
             $query->inRandomOrder();
@@ -25,7 +24,7 @@ class KaryaCarousel extends Component
         if ($this->limit) {
             $query->limit($this->limit);
         }
-        $items = $query->get(['gambar', 'judul', 'url', 'deskripsi']);
+        $items = $query->get(['id','gambar', 'judul', 'deskripsi']);
 
         $this->items = $items->map(function ($item) {
             $item->gambar = asset('/images/bg.png');

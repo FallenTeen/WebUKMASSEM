@@ -166,7 +166,7 @@
         </div>
     </section>
     <section>
-        @livewire('contentmanager.general-carousel', ['limit' => 5, 'randomize' => true])
+    @livewire('contentmanager.general-carousel', ['limit' => 5, 'randomize' => true])
     </section>
 
     <section class="pt-4 items-center h-32 px-4 sm:px-48 text-white bg-black">
@@ -203,7 +203,7 @@
 
 
         <div data-aos="fade-up"
-            class="lg:flex hidden flex-wrap gap-4 justify-center px-2 mx-auto sm:grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
+            class="flex flex-wrap gap-4 justify-center px-2 mx-auto sm:grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             <x-custom.flip-card title="Musik" emoji="🎼" frontContent="This is the front content."
                 backContent="Here is the back content." actionText="Lihat Karya Kami" actionRoute="index.musik"
                 backEmoji="🎼" backgroundImageFront="{{ asset('storage/images/music.png') }}" />
@@ -254,7 +254,7 @@
             <div class="absolute inset-0 w-full h-full bg-gradient-to-bl from-transparent via-red-500 opacity-50 to-transparent"
                 style="mask-image: radial-gradient(circle at 75% 50%, rgba(75, 0, 130, 1) 2%, rgba(0, 0, 0, 0) 10%);">
             </div>
-            @livewire('contentmanager.proker-card', ['proker' => 'mainproker', 'all' => true, 'randomize' => true])
+            @livewire('contentmanager.main-proker-card')
         </div>
     </section>
 

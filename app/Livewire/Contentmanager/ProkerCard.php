@@ -4,6 +4,7 @@ namespace App\Livewire\Contentmanager;
 
 use Livewire\Component;
 use App\Models\MainProker;
+use App\Models\Proker;
 use Illuminate\Support\Facades\DB;
 
 class ProkerCard extends Component
@@ -20,25 +21,33 @@ class ProkerCard extends Component
 
         // Menangani kondisi untuk menampilkan data berdasarkan kategori
         if ($this->proker === 'mainproker') {
-            // Menampilkan kategori utama dari tabel 'tb_main_proker'
-            $this->prokers = DB::table('tb_main_proker')->get();
-        } elseif ($this->proker === 'allproker') {
-            // Menampilkan semua proker dari tabel 'tb_proker'
-            $query = DB::table('tb_proker')->where('judul', '!=', 'lain');
+            $query = MainProker::query()->where('judul', '!=', 'lain');
 
             if ($this->randomize) {
-                $query->inRandomOrder();
+                $query = $query->inRandomOrder();
             }
 
             if ($this->limit) {
-                $query->limit($this->limit);
+                $query = $query->limit($this->limit);
+            }
+
+            $this->prokers = $query->get();
+        } elseif ($this->proker === 'allproker') {
+            $query = Proker::query();
+            // $query = Proker::where('judul', '!=', 'lain')->get();
+
+            if ($this->randomize) {
+                $query = $query->inRandomOrder();
+            }
+
+            if ($this->limit) {
+                $query = $query->limit($this->limit);
             }
 
             $this->prokers = $query->get();
         } else {
             // Menampilkan proker berdasarkan kategori tertentu dari 'tb_proker'
-            $query = DB::table('tb_proker')->where('judul', '!=', 'lain')->where('proker', $this->proker);
-
+            $query = Proker::query()->where('judul', '!=', 'lain')->where('proker', $this->proker);
             if ($this->randomize) {
                 $query->inRandomOrder();
             }
@@ -49,6 +58,7 @@ class ProkerCard extends Component
 
             $this->prokers = $query->get();
         }
+
     }
 
     public function render()

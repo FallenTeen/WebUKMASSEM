@@ -107,27 +107,27 @@
 
                 <div class="absolute left-0 w-80 hidden group-hover:block bg-white shadow-lg rounded-md py-2 mt-0 z-10">
                     <h3 class="px-4 py-2 font-bold text-gray-800">PROGRAM KERJA UTAMA</h3>
-                    <a href="#fisma" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/fisma" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎨</span> Festival Seniman Muda (FISMA)
                     </a>
-                    <a href="#aos" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/aos" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎶</span> ASSEM on Stage (AOS)
                     </a>
-                    <a href="#aos-visual-exhibition" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/ave" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">📷</span> ASSEM Visual Exhibition (AVE)
                     </a>
-                    <a href="#penpro" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/penpro" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎭</span> Pentas Produksi (Penpro)
                     </a>
-                    <a href="#red-carpet" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/RedCarpet" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🌟</span> Red Carpet
                     </a>
 
                     <h3 class="px-4 py-2 font-bold text-gray-800">PROGRAM KERJA SEKUNDER</h3>
-                    <a href="#mistik" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/mistik" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🎂</span> MISTIK
                     </a>
-                    <a href="#assem-lebaran" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
+                    <a href="/main-proker/asleb" class="block px-4 py-2 text-sm hover:bg-gray-100 text-black">
                         <span class="mr-2">🕌</span> ASSEM Lebaran
                     </a>
 

@@ -1,12 +1,14 @@
 <?php
+
 namespace App\Livewire\Contentmanager;
 
 use Livewire\Component;
-use Illuminate\Support\Facades\DB;
+use App\Models\Proker;
 
 class Gallery1 extends Component
 {
-    public $items, $limit, $randomize;
+    public $items = [];
+    public $limit, $randomize;
     public $searchTerm = '';
     public $startDate, $endDate;
 
@@ -19,51 +21,57 @@ class Gallery1 extends Component
 
     public function loadItems()
     {
-        $query = DB::table('tb_proker');
+        $query = Proker::query();
 
         if ($this->randomize) {
             $query->inRandomOrder();
         }
 
-        if ($this->limit) {
-            $query->limit($this->limit);
-        }
-
         if ($this->searchTerm) {
-            $query->where(function ($query) {
-                $query->where('judul', 'like', '%' . $this->searchTerm . '%')
+            $query->where(function ($q) {
+                $q->where('judul', 'like', '%' . $this->searchTerm . '%')
                     ->orWhere('deskripsi', 'like', '%' . $this->searchTerm . '%');
             });
         }
 
         if ($this->startDate && $this->endDate) {
             $startDate = $this->startDate . '-01';
-            $endDate = $this->endDate . '-01'; 
-
+            $endDate = $this->endDate . '-01';
             $query->whereBetween('tanggal', [$startDate, $endDate]);
         }
-        $this->items = $query->get(['gambar', 'judul', 'deskripsi', 'url', 'tanggal']);
-    }
+        $query->limit($this->limit);
 
+        $this->items = $query->get(['gambar', 'judul', 'deskripsi', 'tanggal']);
+    }
+    public function updatedSearchTerm()
+    {
+        $this->limit = 13;
+        $this->loadItems();
+    }
+    
     public function updated($propertyName)
     {
         if ($propertyName == 'startDate' || $propertyName == 'endDate') {
             $this->loadItems();
         }
     }
-    public function loadMore(){
+
+    public function loadMore()
+    {
         $this->limit += 13;
+        $this->loadItems();
     }
 
     public function resetSearch()
     {
-        $this->searchTerm = ''; // Reset pencarian
-        $this->loadItems(); // Memuat ulang data tanpa filter pencarian
+        $this->searchTerm = strip_tags($this->searchTerm); //Biar Gak kena xss coyy
+        $this->loadItems(); // Reload data
     }
 
     public function render()
     {
-        $this->loadItems();
-        return view('livewire.contentmanager.gallery1');
+        return view('livewire.contentmanager.gallery1', [
+            'items' => $this->items,
+        ]);
     }
 }

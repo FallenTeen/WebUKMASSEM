@@ -9,7 +9,7 @@
 
 <div class="{{ $containerClass }}">
 @foreach ($prokers as $proker)
-    <a href="{{ $proker->url }}" x-data="{ hovered: false }" 
+<a href="{{ route('proker.show', ['id' => $proker->id]) }}" x-data="{ hovered: false }" 
         @mouseenter="hovered = true" 
         @mouseleave="hovered = false" 
         class="relative lg:w-96 w-48 overflow-hidden rounded-2xl px-4 sm:px-8 pb-8 pt-40 mt-12 transition-transform transform hover:-translate-y-4 duration-400">

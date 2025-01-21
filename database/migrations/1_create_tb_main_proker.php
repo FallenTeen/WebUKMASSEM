@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('tb_main_proker', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
+            $table->string('judul2');
             $table->text('deskripsi')->nullable();
             $table->string('gambar');
             $table->json('gambardesk')->nullable();

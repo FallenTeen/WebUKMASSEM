@@ -4,18 +4,19 @@ namespace App\Livewire\Contentmanager;
 
 use Livewire\Component;
 use App\Models\Proker;
+use App\Models\MainProker;
 
-class GeneralCarousel extends Component
+class ProkerCarousel extends Component
 {
     public $items;
     public $limit;
     public $randomize;
 
-    public function mount($limit = 5, $randomize = false)
+    public function mount($limit = 5, $randomize = false, $proker = "")
     {
         $this->limit = $limit;
         $this->randomize = $randomize;
-        $query = Proker::query()->where('judul', '!=', 'lain');
+        $query = Proker::where('proker', $proker);
 
         if ($this->randomize) {
             $query->inRandomOrder();
@@ -24,10 +25,11 @@ class GeneralCarousel extends Component
         if ($this->limit) {
             $query->limit($this->limit);
         }
-        $items = $query->get(['id','gambar', 'judul', 'deskripsi','tanggal']);
+        $items = $query->get(['gambar', 'judul', 'deskripsi', 'gambardesk']);
+
 
         $this->items = $items->map(function ($item) {
-            $item->gambar = asset('/images/bg.png'); 
+            $item->gambar = $item->gambar ?? asset('images/bg.png');
             return $item;
         });
 
@@ -39,6 +41,6 @@ class GeneralCarousel extends Component
     }
     public function render()
     {
-        return view('livewire.contentmanager.general-carousel');
+        return view('livewire.contentmanager.proker-carousel');
     }
 }

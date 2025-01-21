@@ -24,13 +24,11 @@
                 <div
                     class="lg:px-32 lg:py-14 absolute inset-0 z-10 flex flex-col items-center justify-end gap-2 bg-gradient-to-t from-neutral-950/85 to-transparent px-16 py-12 text-center">
                     <h3 class="w-full lg:w-[80%] text-balance text-2xl lg:text-3xl font-bold text-white">{{ $item->judul }}
-                        {{ \Carbon\Carbon::parse($item->tanggal)->year }}
                     </h3>
                     <p class="lg:w-1/2 w-full text-pretty text-sm text-neutral-300 line-clamp-3">{{$item->deskripsi}}</p>
                     <a class="text-white rounded-full border px-4 py-2 border-5 hover:bg-white hover:text-black duration-300 border-white"
                         href="{{ route('proker.show', ['id' => $item->id]) }}" target="_blank">Lihat lebih lanjut
-                        {{ $item->judul }} {{ \Carbon\Carbon::parse($item->tanggal)->year }}
-                    </a>
+                        {{ $item->judul }}</a>
                 </div>
                 <img src="{{ $item->gambar }}" class="w-full h-full object-center object-cover" alt="">
             </div>

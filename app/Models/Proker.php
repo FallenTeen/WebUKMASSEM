@@ -17,7 +17,6 @@ protected $table = 'tb_proker';
         'gambar',
         'gambardesk',
         'kategori',
-        'url',
         'tanggal',
         'tags',
     ];

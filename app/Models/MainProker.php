@@ -11,10 +11,11 @@ class MainProker extends Model
     protected $table = 'tb_main_proker';
 
     protected $fillable = [
+        'judul',
         'deskripsi',
+        'url',
         'gambar',
         'gambardesk',
-        'url',
     ];
 
     public function prokers()
