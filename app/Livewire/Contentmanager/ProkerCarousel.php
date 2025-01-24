@@ -29,15 +29,13 @@ class ProkerCarousel extends Component
 
 
         $this->items = $items->map(function ($item) {
-            $item->gambar = $item->gambar ?? asset('images/bg.png');
+            if ($item->gambar) {
+                $item->gambar = 'storage/' . $item->gambar;
+            } else {
+                $item->gambar = 'storage/images/bg.png';
+            }
             return $item;
         });
-
-        // $this->items = $items->map(function ($item) {
-        //     $item->gambar = $item->gambar ? $item->gambar : asset('storage/images/bg.png');
-        //     return $item;
-        // });
-
     }
     public function render()
     {

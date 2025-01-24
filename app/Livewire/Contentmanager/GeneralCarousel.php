@@ -4,7 +4,7 @@ namespace App\Livewire\Contentmanager;
 
 use Livewire\Component;
 use App\Models\Proker;
-
+use Illuminate\Support\Facades\Storage;
 class GeneralCarousel extends Component
 {
     public $items;
@@ -24,18 +24,17 @@ class GeneralCarousel extends Component
         if ($this->limit) {
             $query->limit($this->limit);
         }
-        $items = $query->get(['id','gambar', 'judul', 'deskripsi','tanggal']);
+        $items = $query->get(['id', 'gambar', 'judul', 'deskripsi', 'tanggal']);
+
 
         $this->items = $items->map(function ($item) {
-            $item->gambar = asset('/images/bg.png'); 
+            if ($item->gambar) {
+                $item->gambar = 'storage/' . $item->gambar; 
+            } else {
+                $item->gambar = 'storage/images/bg.png'; 
+            }
             return $item;
         });
-
-        // $this->items = $items->map(function ($item) {
-        //     $item->gambar = $item->gambar ? $item->gambar : asset('storage/images/bg.png');
-        //     return $item;
-        // });
-
     }
     public function render()
     {

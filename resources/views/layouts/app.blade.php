@@ -29,10 +29,12 @@
                 </header>
             @endif
             <main>
+                @livewireStyles
                 {{ $slot }}
             </main>
         </div>
     </div>
+    @livewireScripts
 </body>
 
 </html>

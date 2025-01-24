@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Proker extends Model
 {
     use HasFactory;
-protected $table = 'tb_proker';
+    protected $table = 'tb_proker';
     protected $fillable = [
         'main_proker_id',
         'judul',
-        'proker',
         'deskripsi',
         'gambar',
         'gambardesk',
@@ -35,8 +34,12 @@ protected $table = 'tb_proker';
 
     public function getGambardeskUrlAttribute()
     {
-        return $this->gambardesk ? asset('storage/' . $this->gambardesk) : null;
+        if ($this->gambardesk && is_array($this->gambardesk)) {
+            return array_map(fn($gambar) => asset('storage/' . $gambar), $this->gambardesk);
+        }
+        return null;
     }
+
     public function rapat()
     {
         return $this->hasMany(Rapat::class, 'proker_id');

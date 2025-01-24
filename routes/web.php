@@ -1,7 +1,13 @@
 <?php
 
+use App\Livewire\Pages\Admin\AddMainProker;
+use App\Livewire\Pages\Admin\AddProker;
+use App\Livewire\Pages\Admin\EditMainProker;
+use App\Livewire\Pages\Admin\EditProker;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Livewire\Pages\Admin\IndexMainProker;
+use App\Livewire\Pages\Admin\IndexProker;
 use Livewire\Livewire;
 
 Route::middleware(['auth', 'verUser'])->group(function () {
@@ -14,6 +20,28 @@ Route::middleware(['auth', 'verUser'])->group(function () {
     })->name('dashboard');
 
     Route::view('/admin/dashboard', 'livewire.pages.admin.dashboard')->name('admin.dashboard')->middleware('role:admin');
+
+    Route::get('/admin/indexmainproker', IndexMainProker::class)
+        ->name('admin.indexmainproker')
+        ->middleware('role:admin');
+    Route::get('/admin/mainproker/{id}/edit', EditMainProker::class)
+        ->name('admin.editmainproker')
+        ->middleware('role:admin');
+    Route::get('/admin/mainproker/add', AddMainProker::class)
+        ->name('admin.addmainproker')
+        ->middleware('role:admin');
+
+    Route::get('/admin/indexproker', IndexProker::class)
+        ->name('admin.indexproker')
+        ->middleware('role:admin');
+    Route::get('/admin/proker/{id}/edit', EditProker::class)
+        ->name('admin.editproker')
+        ->middleware('role:admin');
+    Route::get('/admin/proker/add', AddProker::class)
+        ->name('admin.addproker')
+        ->middleware('role:admin');
+
+
     Route::view('/ketum/dashboard', 'livewire.pages.ketum.dashboard')->name('ketum.dashboard')->middleware('role:ketum');
 });
 

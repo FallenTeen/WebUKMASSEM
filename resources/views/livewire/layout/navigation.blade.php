@@ -118,9 +118,8 @@ new class extends Component {
                     </div>
                     <!-- List to show under the button -->
                     <ul x-show="open" x-transition class="mt-2 w-full bg-[#1E293B] p-2 rounded-lg space-y-2 pl-10">
-                        <li><a href="#" class="block p-2 text-white hover:bg-gray-700 rounded-lg">Option 1</a></li>
-                        <li><a href="#" class="block p-2 text-white hover:bg-gray-700 rounded-lg">Option 2</a></li>
-                        <li><a href="#" class="block p-2 text-white hover:bg-gray-700 rounded-lg">Option 3</a></li>
+                        <li><a href="{{ route('admin.indexmainproker')}}" class="block p-2 text-white hover:bg-gray-700 rounded-lg">Proker Utama</a></li>
+                        <li><a href="{{ route('admin.indexproker') }}" class="block p-2 text-white hover:bg-gray-700 rounded-lg">Proker-Proker</a></li>
                     </ul>
                 </div>
 
