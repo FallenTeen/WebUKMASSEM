@@ -37,8 +37,9 @@ class Proker extends Model
         if ($this->gambardesk && is_array($this->gambardesk)) {
             return array_map(fn($gambar) => asset('storage/' . $gambar), $this->gambardesk);
         }
-        return null;
+        return [];
     }
+
 
     public function rapat()
     {
@@ -49,4 +50,3 @@ class Proker extends Model
         return $this->belongsTo(MainProker::class, 'main_proker_id');
     }
 }
-

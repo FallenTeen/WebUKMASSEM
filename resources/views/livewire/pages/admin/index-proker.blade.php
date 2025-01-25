@@ -1,56 +1,69 @@
 <div>
     <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+        <h2 class="font-semibold text-2xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Management All Proker') }}
         </h2>
     </x-slot>
 
-    <div class="mt-4">
-        <div class="flex justify-end gap-8 items-center mb-6">
-            <input type="text" wire:model.live="search" placeholder="Search for Proker..."
-                class="form-control  border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-            <a href="{{route('admin.addproker')}}"
-                class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition">Add New Proker</a>
-        </div>
-        @if (session()->has('message'))
-            <div class="alert alert-success bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded">
-                {{ session('message') }}
+    <div class="mt-4 px-8 container mx-auto">
+        <div class="flex justify-between items-center mb-6 space-x-4">
+            <div class="relative w-full max-w-md">
+                <input type="text" wire:model.live="search" placeholder="Search for Proker..."
+                    class="w-full py-2 pl-4 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white dark:border-gray-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-0 right-0 mt-3 mr-4 w-5 h-5 text-gray-400"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M10 18l6-6-6-6" />
+                </svg>
             </div>
+            <a href="{{route('admin.addproker')}}"
+                class="bg-merah text-white py-2 px-4 rounded-lg hover:bg-red-500 transition ease-in-out duration-300">
+                Add New Proker
+            </a>
+        </div>
+
+        @if (session()->has('message'))
+        <div class="alert alert-success bg-green-100 border-l-4 border-green-500 text-green-700 p-4 mb-4 rounded">
+            {{ session('message') }}
+        </div>
         @endif
 
         <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
-            <table class="min-w-full table-auto">
-                <thead>
-                    <tr class="bg-gray-100 text-left">
-                        <th class="px-4 py-2 font-medium text-gray-700">ID</th>
-                        <th class="px-4 py-2 font-medium text-gray-700">Judul</th>
-                        <th class="px-4 py-2 font-medium text-gray-700">Deskripsi</th>
-                        <th class="px-4 py-2 font-medium text-gray-700">Kategori</th>
-                        <th class="px-4 py-2 font-medium text-gray-700">Tags</th>
-                        <th class="px-4 py-2 font-medium text-gray-700">Tanggal</th>
-                        <th class="px-4 py-2 font-medium text-gray-700">Aksi</th>
+            <table class="min-w-full table-auto text-sm text-gray-700">
+                <thead class="bg-merah text-white">
+                    <tr>
+                        <th class="px-4 py-3 text-left">ID</th>
+                        <th class="px-4 py-3 text-left">Judul</th>
+                        <th class="px-4 py-3 text-left">Deskripsi</th>
+                        <th class="px-4 py-3 text-left">Kategori</th>
+                        <th class="px-4 py-3 text-left">Tags</th>
+                        <th class="px-4 py-3 text-left">Tanggal</th>
+                        <th class="px-4 py-3 text-left">Aksi</th>
                     </tr>
                 </thead>
-                <tbody>
+                <tbody class="bg-gray-50">
                     @foreach ($prokers as $proker)
-                        <tr class="border-t hover:bg-gray-50">
-                            <td class="px-4 py-2">{{ $proker->id }}</td>
-                            <td class="px-4 py-2">{{ $proker->judul }}
-                                {{ \Carbon\Carbon::parse($proker->tanggal)->format('Y') }}
-                            </td>
-                            <td class="px-4 py-2">{{ $proker->deskripsi }}</td>
-                            <td class="px-4 py-2">{{ $proker->kategori }}</td>
-                            <td class="px-4 py-2">{{ implode(', ', json_decode($proker->tags)) }}</td>
-                            <td class="px-4 py-2">{{ \Carbon\Carbon::parse($proker->tanggal)->format('d-m-Y') }}</td>
-                            <td class="px-4 py-2">
-                                <a href="{{ route('admin.editproker', $proker->id) }}"
-                                    class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition">Edit</a>
-                                <button wire:click="deleteProker({{ $proker->id }})"
-                                    wire:confirm="Kamu Yakin Hapus Data Ini?"
-                                    class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition">Delete</button>
-
-                            </td>
-                        </tr>
+                    <tr class="border-t hover:bg-gray-100">
+                        <td class="px-4 py-3">{{ $proker->id }}</td>
+                        <td class="px-4 py-3">
+                            <div class="font-semibold">{{ $proker->judul }} {{ \Carbon\Carbon::parse($proker->tanggal)->format('Y') }}</div>
+                        </td>
+                        <td class="px-4 py-3">{!! Str::limit($proker->deskripsi, 100) !!}</td>
+                        <td class="px-4 py-3">{{ $proker->kategori }}</td>
+                        <td class="px-4 py-3">{{ implode(', ', json_decode($proker->tags)) }}</td>
+                        <td class="px-4 py-3">{{ \Carbon\Carbon::parse($proker->tanggal)->format('d-m-Y') }}</td>
+                        <td class="px-4 py-3 space-x-2">
+                            <a href="{{ route('admin.editproker', $proker->id) }}"
+                                class="bg-blue-500 text-white py-1 px-3 rounded-md hover:bg-blue-600 transition ease-in-out duration-200">
+                                Edit
+                            </a>
+                            <button wire:click="deleteProker({{ $proker->id }})"
+                                wire:confirm="Are you sure you want to delete this?"
+                                class="bg-red-500 text-white py-1 px-3 rounded-md hover:bg-red-600 transition ease-in-out duration-200">
+                                <span class="text-sm">Delete</span>
+                            </button>
+                        </td>
+                    </tr>
                     @endforeach
                 </tbody>
             </table>
@@ -59,5 +72,4 @@
             {{ $prokers->links() }}
         </div>
     </div>
-
 </div>

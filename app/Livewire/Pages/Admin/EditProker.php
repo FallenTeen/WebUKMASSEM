@@ -103,6 +103,7 @@ class EditProker extends Component
             'main_proker_id' => 'required|exists:tb_main_proker,id',
             'judul' => 'required|string|max:64',
             'tanggal' => 'nullable|date',
+            'kategori' => 'required|in:primer,sekunder',
         ]);
 
         if ($this->gambar instanceof \Illuminate\Http\UploadedFile) {
@@ -116,9 +117,10 @@ class EditProker extends Component
             'judul' => $this->judul,
             'gambar' => $this->proker->gambar,
             'tanggal' => $this->tanggal,
+            'kategori' => $this->kategori,
         ]);
 
-        sweetalert()->success('Section 1 Updated Successfully');
+        sweetalert()->success('Data Utama Berhasil Diubah');
     }
 
     public function saveSection2()
@@ -127,7 +129,7 @@ class EditProker extends Component
             'deskripsi' => 'nullable|string',
             'gambardesk.*' => 'nullable|image|max:8192',
             'tags.*' => 'nullable|string|max:50',
-            'kategori' => 'required|in:primer,sekunder',
+
         ]);
 
         $this->saveGambardesk();
@@ -136,10 +138,10 @@ class EditProker extends Component
             'deskripsi' => $this->deskripsi,
             'gambardesk' => $this->proker->gambardesk,
             'tags' => json_encode($this->tags),
-            'kategori' => $this->kategori,
+
         ]);
 
-        sweetalert()->success('Section 2 Updated Successfully');
+        sweetalert()->success('Deskripsi Berhasil Diubah');
     }
 
     public function addTag()

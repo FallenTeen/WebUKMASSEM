@@ -13,7 +13,6 @@ class AddProker extends Component
     public $step = 1;
     public $judul, $main_proker_id, $gambar, $tanggal, $kategori, $allMainProkers, $tagInput;
     public $deskripsi, $gambardesk = [], $tags = [];
-    public $allTags = [];
 
     protected $rules = [
         'main_proker_id' => 'required|exists:tb_main_proker,id',
@@ -25,24 +24,29 @@ class AddProker extends Component
         'tags.*' => 'nullable|string|max:50',
         'kategori' => 'required|in:primer,sekunder'
     ];
+
     public function mount()
     {
         $this->allMainProkers = MainProker::all();
     }
+
     public function updated($propertyName)
     {
         $this->validateOnly($propertyName);
     }
+
     public function nextStep()
     {
         $rules = $this->rulesForStep();
         $this->validate($rules);
         $this->step++;
     }
+
     public function prevStep()
     {
         $this->step--;
     }
+
     public function rulesForStep()
     {
         return match ($this->step) {
@@ -58,26 +62,23 @@ class AddProker extends Component
                 'gambardesk.*' => 'nullable|image|max:8192',
                 'tags.*' => 'nullable|string|max:50',
             ],
-            3 => [],
             default => [],
         };
     }
 
     public function addTag()
     {
-        $sanitizedTag = trim($this->tagInput);
-        if (!empty($sanitizedTag) && !in_array($sanitizedTag, $this->tags) && strlen($sanitizedTag) <= 50) {
-            $this->tags[] = $sanitizedTag;
-            $this->tagInput = '';
+        if (!empty($this->tagInput) && !in_array($this->tagInput, $this->tags)) {
+            $this->tags[] = $this->tagInput;
+            $this->tagInput = ''; // Clear the input after adding
         }
     }
 
     public function removeTag($index)
     {
-        array_splice($this->tags, $index, 1);
+        unset($this->tags[$index]);
+        $this->tags = array_values($this->tags); // Reindex the array
     }
-
-
     public function save()
     {
         $gambarPath = $this->gambar
@@ -97,6 +98,7 @@ class AddProker extends Component
             'tags' => json_encode($this->tags),
             'kategori' => $this->kategori,
         ]);
+
 
         sweetalert()->success('Proker Berhasil Ditambahkan');
         return redirect()->route('admin.indexproker');

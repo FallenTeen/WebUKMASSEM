@@ -176,164 +176,92 @@
 
                         <div class="w-full flex flex-col">
                             <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <input id="deskripsi" type="hidden" wire:model="deskripsi">
-                            <trix-editor input="deskripsi"></trix-editor>
-                            @error('deskripsi')
-                            <span class="text-danger">{{ $message }}</span>
-                            @enderror
+                            <input id="deskripsi" type="hidden" class="form-control" wire:model="deskripsi">
+                            <trix-editor input="deskripsi" class="form-control" wire:model="deskripsi"></trix-editor>
+                            @error('deskripsi') <span class="text-danger">{{ $message }}</span> @enderror
                         </div>
-
 
                         <div>
                             <div>
                                 <h3>Gambar Desk</h3>
-                                <div class="mb-4 flex flex-wrap">
-                                    <div class="pr-4 flex flex-wrap" id="gambar-desk-container">
-                                        @foreach($gambardesk as $index => $image)
-                                        <div class="flex items-center" id="gambar-desk-{{ $index }}">
-                                            <img src="{{ $image->temporaryUrl() }}" class="w-16 h-16 object-cover mr-2" alt="Image preview">
-                                            <button type="button" class="text-red-500 hover:text-red-700 transition duration-150 ease-in-out" onclick="removeGambarDesk({{ $index }})">Remove</button>
-                                        </div>
-                                        @endforeach
+                                <div class="mb-4">
+                                    @foreach($gambardesk as $index => $image)
+                                    <div class="flex items-center mb-2">
+                                        <img src="{{ $image->temporaryUrl() }}" class="w-16 h-16 object-cover mr-2" alt="Image preview">
+                                        <button type="button" wire:click="removeGambarDesk({{ $index }})" class="text-red-500">Remove</button>
                                     </div>
-
-                                    <!-- Custom File Input -->
-                                    <label for="gambardesk" class="cursor-pointer mt-2">
-                                        <div class="flex justify-center flex-col items-center w-15 h-15 border-2 border-gray-900 px-4 py-1 rounded-full">
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                                </svg>
-                                            </div>
-                                            <span class="font-bold text-xs text-center">Tambah File</span>
-                                        </div>
-                                    </label>
-                                    <input type="file" wire:model="gambardesk" id="gambardesk" class="sr-only" multiple />
-
-                                    @error('gambardesk.*')
-                                    <span class="text-red-500 text-xs mt-2">{{ $message }}</span>
-                                    @enderror
+                                    @endforeach
+                                    <input type="file" wire:model="gambardesk" class="mt-2" multiple />
+                                    @error('gambardesk.*') <span class="text-red-500">{{ $message }}</span> @enderror
                                 </div>
+                                <button wire:click="addGambarDesk" class="btn btn-primary">Add More Images</button>
                             </div>
-
                         </div>
                         <div class="mb-3">
                             <label for="tags" class="form-label">Tags</label>
+                            <div class="d-flex">
+                                <input type="text" id="tagInput" class="form-control me-2" placeholder="Tambah Tag" wire:model.defer="tagInput">
+                                <button type="button" class="btn btn-primary" wire:click="addTag">Tambah</button>
+                            </div>
                             <div class="mt-2">
-                                <div class="flex items-center gap-4">
-                                    <input
-                                        type="text"
-                                        wire:model="tagInput"
-                                        class="form-control active:outline-none focus:ring-2 focus:ring-merah focus:border-merah"
-                                        placeholder="Add a tag"
-                                        wire:keydown.enter="addTag">
-                                    <button type="button" wire:click="addTag"
-                                        class="group cursor-pointer outline-none hover:rotate-90 duration-300">
-                                        <svg
-                                            class="stroke-merah fill-none group-hover:fill-red-200 group-active:stroke-red-200 group-active:fill-red-600 group-active:duration-0 duration-300"
-                                            viewBox="0 0 24 24"
-                                            height="45px"
-                                            width="45px"
-                                            xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                stroke-width="1.5"
-                                                d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"></path>
-                                            <path stroke-width="1.5" d="M8 12H16"></path>
-                                            <path stroke-width="1.5" d="M12 16V8"></path>
-                                        </svg>
-                                    </button>
-                                </div>
-
-
-                                <div class="mt-2">
-                                    @foreach ($tags as $index => $tag)
-                                    <span class="inline-flex items-center bg-gray-200 text-gray-800 rounded-full px-4 py-2 mb-2 mr-2">
-                                        <div class="text-sm font-semibold">
-                                            {{ $tag }}
-                                        </div>
-                                        <button
-                                            type="button"
-                                            class="ml-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-700 focus:outline-none"
-                                            wire:click="removeTag({{ $index }})">
-                                            <span class="text-sm">&times;</span>
-                                        </button>
-                                    </span>
-
-                                    @endforeach
-                                </div>
+                                @foreach ($tags as $index => $tag)
+                                <span class="badge bg-secondary me-2">
+                                    {{ $tag }}
+                                    <button type="button" class="btn-close btn-close-white" aria-label="Remove" wire:click="removeTag({{ $index }})"></button>
+                                </span>
+                                @endforeach
                             </div>
                         </div>
                     </div>
                     @endif
                     <!-- step3 -->
                     @if ($step == 3)
-                    <div class="w-full">
-
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full flex items-center justify-center {{ $step >= 2 ? 'bg-merah text-white' : 'bg-gray-300 text-gray-700' }}">
-                                3
-                            </div>
-                            <div class="grid">
-                                <span class="px-4 font-bold text-2xl">Preview</span>
-                                <span class="px-4 text-sm">Pastikan data-datanya sudah benar</span>
+                    <div>
+                        <h5>Preview Data</h5>
+                        <div class="mb-3">
+                            <strong>Judul Main Proker:</strong> {{ $allMainProkers->firstWhere('id', $main_proker_id)->judul ?? 'Not selected' }}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Kategori:</strong> {{ ucfirst($kategori) }}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Judul Proker:</strong> {{ $judul }}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Gambar:</strong>
+                            @if($gambar)
+                            <img src="{{ $gambar->temporaryUrl() }}" class="img-thumbnail" width="100">
+                            @else
+                            Not selected
+                            @endif
+                        </div>
+                        <div class="mb-3">
+                            <strong>Tanggal:</strong> {{ $tanggal }}
+                        </div>
+                        <div class="mb-3">
+                            <strong>Deskripsi:</strong>
+                            <p>{{ $deskripsi }}</p>
+                        </div>
+                        <div class="mb-3">
+                            <strong>Gambar Deskripsi:</strong>
+                            <div class="row">
+                                @foreach ($gambardesk as $image)
+                                <div class="col-3">
+                                    <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail" width="100">
+                                </div>
+                                @endforeach
                             </div>
                         </div>
-                        <div class="flex flex-row mx-14">
-                            <div class="flex flex-col w-1/3">
-                                <div class="mb-3 flex flex-col">
-                                    <strong>Gambar:</strong>
-                                    @if($gambar)
-                                    <img src="{{ $gambar->temporaryUrl() }}" class="img-thumbnail w-full h-grow object-cover" alt="Gambar Proker">
-                                    @else
-                                    Gambar belum diinput
-                                    @endif
-                                </div>
-                                <div class="mb-3 flex-flex-col">
-                                    <strong>Gambar Deskripsi:</strong>
-                                    <div class="flex flex-wrap gap-4">
-                                        @foreach ($gambardesk as $image)
-                                        <div class="h-48 ">
-                                            <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail" width="100">
-                                        </div>
-                                        @endforeach
-                                    </div>
-                                </div>
+                        <div class="mb-3">
+                            <strong>Tags:</strong>
+                            <div>
+                                @foreach ($tags as $tag)
+                                <span class="badge bg-secondary">{{ $tag }}</span>
+                                @endforeach
                             </div>
-                            <div class=" pl-12 w-2/3 flex flex-col gap-4">
-                                <div class="flex w-full">
-                                    <strong class="w-1/3">Judul Main Proker</strong>
-                                    <div class="w-2/3">{{ $allMainProkers->firstWhere('id', $main_proker_id)->judul ?? 'Not selected' }}</div>
-                                </div>
-                                <div class="flex w-full">
-                                    <strong class="w-1/3">Kategori</strong>
-                                    <div class="w-2/3">{{ ucfirst($kategori) }}</div>
-                                </div>
-                                <div class="flex w-full">
-                                    <strong class="w-1/3">Judul Proker</strong>
-                                    <div class="w-2/3">{{ $judul }}</div>
-                                </div>
+                            @endif
 
-                                <div class="flex w-full">
-                                    <strong class="w-1/3">Tanggal</strong>
-                                    <div class="w-2/3">{{ $tanggal }}</div>
-                                </div>
-                                <div class="flex w-full">
-                                    <strong class="w-1/3">Deskripsi</strong>
-                                    <p class="w-2/3">{{ $deskripsi }}</p>
-                                </div>
-
-                                <div class="mb-3">
-                                    <strong>Tags</strong>
-                                    <div>
-                                        @foreach ($tags as $tag)
-                                        <span class="badge bg-secondary">{{ $tag }}</span>
-                                        @endforeach
-                                    </div>
-                                    @endif
-                                </div>
-                            </div>
                         </div>
-
                         <div class="w-full flex justify-center gap-8 my-6">
                             <button type="button" class="{{ $step > 1 && $step <= 3 ? 'grow bg-gray-500 block rounded-lg px-3 py-2' : 'hidden' }} text-white" wire:click="prevStep">Sebelumnya</button>
                             @if ($step >= 1 && $step < 3)
