@@ -374,11 +374,9 @@
     </section>
     <x-custom.footer></x-custom.footer>
     <script>
-        // Periksa apakah pengguna sudah pernah mengunjungi halaman sebelumnya
         if (!localStorage.getItem('visited')) {
-            // Jika belum, arahkan ke /splash
-            localStorage.setItem('visited', 'true'); // Tandai bahwa pengunjung sudah datang
-            window.location.href = "/splash"; // Mengarahkan ke halaman splash
+            localStorage.setItem('visited', 'true'); 
+            window.location.href = "/splash";
         }
     </script>
 

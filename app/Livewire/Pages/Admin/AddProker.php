@@ -51,12 +51,12 @@ class AddProker extends Component
                 'judul' => 'required|string|max:64',
                 'gambar' => 'nullable|image|max:8192',
                 'tanggal' => 'nullable|date',
+                'kategori' => 'required|in:primer,sekunder',
             ],
             2 => [
                 'deskripsi' => 'nullable|string',
                 'gambardesk.*' => 'nullable|image|max:8192',
                 'tags.*' => 'nullable|string|max:50',
-                'kategori' => 'required|in:primer,sekunder',
             ],
             3 => [],
             default => [],

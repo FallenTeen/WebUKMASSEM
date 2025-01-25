@@ -12,12 +12,23 @@ use Livewire\Livewire;
 
 Route::middleware(['auth', 'verUser'])->group(function () {
     Route::get('/dashboard', function () {
-        $role = auth()->user()->anggota->role;
+        $role = Auth::user()->anggota->role;
         if ($role) {
             return redirect()->route("{$role}.dashboard");
         }
         return redirect()->route('dashboard');
     })->name('dashboard');
+
+    Route::view('profile', 'profile')
+        ->middleware(['auth', 'verUser'])
+        ->name('profile');
+
+    Route::get('/logout', function () {
+        Auth::logout();
+        request()->session()->invalidate();
+        request()->session()->regenerateToken();
+        return redirect('/');
+    })->name('logout');
 
     Route::view('/admin/dashboard', 'livewire.pages.admin.dashboard')->name('admin.dashboard')->middleware('role:admin');
 
@@ -58,18 +69,6 @@ Route::view('/teater', 'divisi.index-teater')->name('index.teater');
 Route::get('/main-proker/{proker}', App\Livewire\Contentmanager\MainProkerArticle::class)->name('mainproker.show');
 Route::get('/proker/{id}', [\App\Livewire\Contentmanager\ProkerArticle::class])->name('proker.show');
 Route::get('/karya/{id}', [\App\Livewire\Contentmanager\KaryaArticle::class])->name('karya.show');
-
-
-Route::view('profile', 'profile')
-    ->middleware(['auth', 'verUser'])
-    ->name('profile');
-
-Route::get('/logout', function () {
-    Auth::logout();
-    request()->session()->invalidate();
-    request()->session()->regenerateToken();
-    return redirect('/');
-})->name('logout');
 
 //pranks
 Route::view('/login', 'nothing');
