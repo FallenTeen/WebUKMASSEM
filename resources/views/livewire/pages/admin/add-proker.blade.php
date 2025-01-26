@@ -176,8 +176,8 @@
 
                         <div class="w-full flex flex-col">
                             <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <input id="deskripsi" type="hidden" wire:model="deskripsi">
-                            <trix-editor input="deskripsi"></trix-editor>
+                            <input id="deskripsi" type="hidden" wire:ignore wire:model="deskripsi">
+                            <trix-editor input="deskripsi" wire:ignore></trix-editor>
                             @error('deskripsi')
                             <span class="text-danger">{{ $message }}</span>
                             @enderror
@@ -185,38 +185,61 @@
 
 
                         <div>
-                            <div>
-                                <h3>Gambar Desk</h3>
-                                <div class="mb-4 flex flex-wrap">
-                                    <div class="pr-4 flex flex-wrap" id="gambar-desk-container">
-                                        @foreach($gambardesk as $index => $image)
-                                        <div class="flex items-center" id="gambar-desk-{{ $index }}">
-                                            <img src="{{ $image->temporaryUrl() }}" class="w-16 h-16 object-cover mr-2" alt="Image preview">
-                                            <button type="button" class="text-red-500 hover:text-red-700 transition duration-150 ease-in-out" onclick="removeGambarDesk({{ $index }})">Remove</button>
-                                        </div>
-                                        @endforeach
+                            <h3>Gambar Deskripsi/Dokumentasi</h3>
+                            <div class="mb-4 flex flex-wrap relative">
+                                <div class="pr-4 flex flex-wrap" id="gambar-desk-container">
+                                    @foreach($gambardesk as $image)
+                                    <div class="flex items-center mb-2 relative">
+                                        <a href="{{ Storage::url($image->path) }}" target="_blank">
+                                            <img src="{{ Storage::url($image->path) }}" alt="Gambar Desk" class="w-24 h-24 object-cover rounded-md mr-2" />
+                                        </a>
+                                        <button
+                                            type="button"
+                                            wire:click="removeGambardesk({{ $image->id }})"
+                                            class="absolute -top-1 right-0 bg-red-500 text-white text-xs rounded-full p-1 hover:bg-red-600">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                            </svg>
+
+                                        </button>
                                     </div>
+                                    @endforeach
 
-                                    <!-- Custom File Input -->
-                                    <label for="gambardesk" class="cursor-pointer mt-2">
-                                        <div class="flex justify-center flex-col items-center w-15 h-15 border-2 border-gray-900 px-4 py-1 rounded-full">
-                                            <div>
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="size-6">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
-                                                </svg>
-                                            </div>
-                                            <span class="font-bold text-xs text-center">Tambah File</span>
-                                        </div>
-                                    </label>
-                                    <input type="file" wire:model="gambardesk" id="gambardesk" class="sr-only" multiple />
 
-                                    @error('gambardesk.*')
-                                    <span class="text-red-500 text-xs mt-2">{{ $message }}</span>
-                                    @enderror
+                                    @foreach($gambardeskFiles as $file)
+                                    <div class="flex items-center mb-2">
+                                        <img src="{{ $file->temporaryUrl() }}" alt="Gambar Desk" class="w-24 h-24 object-cover rounded-md mr-2" />
+                                    </div>
+                                    @endforeach
                                 </div>
+
+                                <div class="file-upload flex items-center justify-center h-auto">
+                                    <input type="file" wire:model="gambardeskFiles" multiple id="file-upload" class="hidden file-upload-input" />
+                                    <div>
+                                        <label for="file-upload" class="cursor-pointer file-upload-label p-2 text-center justify-center flex flex-col items-center border-2 border-dashed border-blue-500 rounded-xl hover:bg-blue-50 transition duration-300 ease-in-out">
+                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-12 h-12 text-blue-500 mb-2 transition duration-300 ease-in-out">
+                                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v6m3-3H9m12 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                            </svg>
+                                            <!-- Text below the icon -->
+                                            <span class="text-blue-500 font-semibold text-sm">Tambah Gambar</span>
+                                        </label>
+                                    </div>
+                                </div>
+
+
+                                @error('gambardeskFiles.*')
+                                <span class="text-red-500 text-xs mt-2">{{ $message }}</span>
+                                @enderror
                             </div>
 
+                            @if (session()->has('message'))
+                            <div class="mt-2 text-green-500">
+                                {{ session('message') }}
+                            </div>
+                            @endif
                         </div>
+
+
                         <div class="mb-3">
                             <label for="tags" class="form-label">Tags</label>
                             <div class="mt-2">
@@ -269,37 +292,54 @@
                     @if ($step == 3)
                     <div class="w-full">
 
-                        <div class="flex items-center mb-4">
-                            <div class="w-10 h-10 rounded-full flex items-center justify-center {{ $step >= 2 ? 'bg-merah text-white' : 'bg-gray-300 text-gray-700' }}">
-                                3
-                            </div>
-                            <div class="grid">
-                                <span class="px-4 font-bold text-2xl">Preview</span>
-                                <span class="px-4 text-sm">Pastikan data-datanya sudah benar</span>
-                            </div>
-                        </div>
-                        <div class="flex flex-row mx-14">
-                            <div class="flex flex-col w-1/3">
-                                <div class="mb-3 flex flex-col">
-                                    <strong>Gambar:</strong>
-                                    @if($gambar)
-                                    <img src="{{ $gambar->temporaryUrl() }}" class="img-thumbnail w-full h-grow object-cover" alt="Gambar Proker">
-                                    @else
-                                    Gambar belum diinput
-                                    @endif
+
+                        <div class="flex flex-row mx-14 mt-10">
+                            <div class="w-1/3 flex-col flex gap-4">
+                                <div>
+                                    <div class="relative">
+                                        @if ($gambar)
+                                        <img src="{{ $gambar->temporaryUrl() }}" class="mt-4 min-w-full object-cover cursor-pointer" id="preview" onclick="document.getElementById('file-upload').click()">
+                                        @endif
+                                    </div>
                                 </div>
-                                <div class="mb-3 flex-flex-col">
-                                    <strong>Gambar Deskripsi:</strong>
-                                    <div class="flex flex-wrap gap-4">
-                                        @foreach ($gambardesk as $image)
-                                        <div class="h-48 ">
-                                            <img src="{{ $image->temporaryUrl() }}" class="img-thumbnail" width="100">
+                                <div>
+                                    <div class="pr-4 flex flex-wrap" id="gambar-desk-container">
+                                        @foreach($gambardesk as $image)
+                                        <div class="flex items-center mb-2 relative">
+                                            <a href="{{ Storage::url($image->path) }}" target="_blank">
+                                                <img src="{{ Storage::url($image->path) }}" alt="Gambar Desk" class="w-24 h-24 object-cover rounded-md mr-2" />
+                                            </a>
+                                            <button
+                                                type="button"
+                                                wire:click="removeGambardesk({{ $image->id }})"
+                                                class="absolute -top-1 right-0 bg-red-500 text-white text-xs rounded-full p-1 hover:bg-red-600">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-3">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                                                </svg>
+
+                                            </button>
+                                        </div>
+                                        @endforeach
+
+
+                                        @foreach($gambardeskFiles as $file)
+                                        <div class="flex items-center mb-2">
+                                            <img src="{{ $file->temporaryUrl() }}" alt="Gambar Desk" class="w-24 h-24 object-cover rounded-md mr-2" />
                                         </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
                             <div class=" pl-12 w-2/3 flex flex-col gap-4">
+                                <div class="flex items-center mb-4">
+                                    <div class="w-10 h-10 rounded-full flex items-center justify-center {{ $step >= 2 ? 'bg-merah text-white' : 'bg-gray-300 text-gray-700' }}">
+                                        3
+                                    </div>
+                                    <div class="grid">
+                                        <span class="px-4 font-bold text-2xl">Preview</span>
+                                        <span class="px-4 text-sm">Pastikan data-datanya sudah benar</span>
+                                    </div>
+                                </div>
                                 <div class="flex w-full">
                                     <strong class="w-1/3">Judul Main Proker</strong>
                                     <div class="w-2/3">{{ $allMainProkers->firstWhere('id', $main_proker_id)->judul ?? 'Not selected' }}</div>

@@ -63,6 +63,7 @@ class EditProker extends Component
             $this->proker->gambar = $this->existingGambar;
         }
     }
+
     public function removeGambardesk($index)
     {
         $gambardeskImages = $this->existingGambarDesk;
@@ -129,7 +130,6 @@ class EditProker extends Component
             'deskripsi' => 'nullable|string',
             'gambardesk.*' => 'nullable|image|max:8192',
             'tags.*' => 'nullable|string|max:50',
-
         ]);
 
         $this->saveGambardesk();
@@ -138,7 +138,6 @@ class EditProker extends Component
             'deskripsi' => $this->deskripsi,
             'gambardesk' => $this->proker->gambardesk,
             'tags' => json_encode($this->tags),
-
         ]);
 
         sweetalert()->success('Deskripsi Berhasil Diubah');
@@ -146,16 +145,15 @@ class EditProker extends Component
 
     public function addTag()
     {
-        $sanitizedTag = trim($this->tagInput);
-        if (!empty($sanitizedTag) && !in_array($sanitizedTag, $this->tags) && strlen($sanitizedTag) <= 50) {
-            $this->tags[] = $sanitizedTag;
+        if (!empty($this->tagInput) && !in_array($this->tagInput, $this->tags)) {
+            $this->tags[] = $this->tagInput;
             $this->tagInput = '';
         }
     }
-
     public function removeTag($index)
     {
-        array_splice($this->tags, $index, 1);
+        unset($this->tags[$index]);
+        $this->tags = array_values($this->tags);
     }
 
     public function render()

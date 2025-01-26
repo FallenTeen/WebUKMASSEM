@@ -11,6 +11,7 @@ window.onload = function () {
     AOS.refresh();
 };
 
+
 document.addEventListener("DOMContentLoaded", () => {
     AOS.init({
         duration: 800,
@@ -18,13 +19,6 @@ document.addEventListener("DOMContentLoaded", () => {
         once: true,
         offset: -5,
     });
-
-    window.removeGambarDesk = function (index) {
-        const imageContainer = document.getElementById("gambar-desk-" + index);
-        if (imageContainer) {
-            imageContainer.remove();
-        }
-    };
 
     const targetId = window.location.hash.slice(1); // Ambil hash tanpa "#"
     if (targetId) {

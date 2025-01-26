@@ -9,7 +9,7 @@
         <div class="flex justify-between items-center mb-6 space-x-4">
             <div class="relative w-full max-w-md">
                 <input type="text" wire:model.live="search" placeholder="Search for Proker..."
-                    class="w-full py-2 pl-4 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:bg-gray-800 dark:text-white dark:border-gray-700">
+                    class="w-full py-2 pl-4 pr-10 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-merah dark:bg-gray-800 dark:text-white dark:border-gray-700">
                 <svg xmlns="http://www.w3.org/2000/svg" class="absolute top-0 right-0 mt-3 mr-4 w-5 h-5 text-gray-400"
                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -17,7 +17,7 @@
                 </svg>
             </div>
             <a href="{{ route('admin.addmainproker') }}"
-                class="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition ease-in-out duration-300">
+                class="bg-merah text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition ease-in-out duration-300">
                 Add New Proker
             </a>
         </div>
@@ -30,7 +30,7 @@
 
         <div class="overflow-x-auto bg-white shadow-lg rounded-lg">
             <table class="min-w-full table-auto text-sm text-gray-700">
-                <thead class="bg-blue-500 text-white">
+                <thead class="bg-merah text-white">
                     <tr>
                         <th class="px-4 py-3 text-left">ID</th>
                         <th class="px-4 py-3 text-left">Judul</th>

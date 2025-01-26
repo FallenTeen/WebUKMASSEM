@@ -88,30 +88,35 @@
     <div class="section space-y-6 mx-4 mb-4 p-6 bg-white rounded-lg">
         <h3 class="text-xl font-semibold text-gray-700">Section 2: Deskripsi, Gambardesk, Tags</h3>
         <form wire:submit.prevent="saveSection2" class="space-y-4">
-            <div class="form-group">
-                <label for="deskripsi" class="block text-gray-600">Deskripsi</label>
-                <trix-editor input="deskripsi" wire:model="deskripsi"></trix-editor>
-                @error('deskripsi') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
+            <div class="w-full flex flex-col">
+                <label for="deskripsi" class="form-label">Deskripsi</label>
+                <input id="deskripsi" value="{{$proker->deskripsi}}" type="hidden" wire:model.defer="deskripsi">
+
+                <trix-editor input="deskripsi" wire:ignore></trix-editor>
+
+                @error('deskripsi')
+                <span class="text-danger">{{ $message }}</span>
+                @enderror
             </div>
 
+
+
+            <!-- Gambardesk Section -->
             <div class="form-group">
                 <label for="gambardesk" class="block text-gray-600">Gambar deskripsi/dokumentasi</label>
-                <input type="file" id="gambardesk" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
-                    wire:model="gambardesk" multiple>
+                <input type="file" id="gambardesk" class="mt-2 block w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500" wire:model="gambardesk" multiple>
 
-                @if(!empty($existingGambarDesk))
+                @if($existingGambarDesk && count($existingGambarDesk) > 0)
                 <div class="mt-3 space-y-2 flex gap-4">
                     @foreach($existingGambarDesk as $index => $image)
                     <div class="relative flex items-center space-x-2">
                         <img src="{{ Storage::url($image) }}" alt="Existing Gambardesk" class="rounded shadow-md" width="100">
-                        <button type="button" class="absolute top-1 right-1 text-white bg-red-600 rounded-full w-5 h-5 flex items-center justify-center text-lg font-bold"
-                            wire:click="removeGambardesk({{ $index }})">
+                        <button type="button" class="absolute top-1 right-1 text-white bg-red-600 rounded-full w-5 h-5 flex items-center justify-center text-lg font-bold" wire:click="removeGambardesk({{ $index }})">
                             &times;
                         </button>
                     </div>
                     @endforeach
                 </div>
-
                 @endif
 
                 @if($gambardesk && is_array($gambardesk))
@@ -128,33 +133,20 @@
                 @error('gambardesk.*') <span class="text-red-500 text-sm">{{ $message }}</span> @enderror
             </div>
 
+            <!-- Tags Section -->
             <div class="form-group">
                 <label for="tags" class="form-label">Tags</label>
                 <div class="mt-2">
                     <div class="flex items-center gap-4">
-                        <input
-                            type="text"
-                            wire:model="tagInput"
-                            class="form-control active:outline-none focus:ring-2 focus:ring-merah focus:border-merah"
-                            placeholder="Add a tag"
-                            wire:keydown.enter="addTag">
-                        <button type="button" wire:click="addTag"
-                            class="group cursor-pointer outline-none hover:rotate-90 duration-300">
-                            <svg
-                                class="stroke-merah fill-none group-hover:fill-red-200 group-active:stroke-red-200 group-active:fill-red-600 group-active:duration-0 duration-300"
-                                viewBox="0 0 24 24"
-                                height="45px"
-                                width="45px"
-                                xmlns="http://www.w3.org/2000/svg">
-                                <path
-                                    stroke-width="1.5"
-                                    d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"></path>
+                        <input type="text" wire:model="tagInput" class="form-control active:outline-none focus:ring-2 focus:ring-merah focus:border-merah" placeholder="Add a tag" wire:keydown.enter="addTag">
+                        <button type="button" wire:click="addTag" class="group cursor-pointer outline-none hover:rotate-90 duration-300">
+                            <svg class="stroke-merah fill-none group-hover:fill-red-200 group-active:stroke-red-200 group-active:fill-red-600 group-active:duration-0 duration-300" viewBox="0 0 24 24" height="45px" width="45px" xmlns="http://www.w3.org/2000/svg">
+                                <path stroke-width="1.5" d="M12 22C17.5 22 22 17.5 22 12C22 6.5 17.5 2 12 2C6.5 2 2 6.5 2 12C2 17.5 6.5 22 12 22Z"></path>
                                 <path stroke-width="1.5" d="M8 12H16"></path>
                                 <path stroke-width="1.5" d="M12 16V8"></path>
                             </svg>
                         </button>
                     </div>
-
 
                     <div class="mt-2">
                         @foreach ($tags as $index => $tag)
@@ -162,23 +154,19 @@
                             <div class="text-sm font-semibold">
                                 {{ $tag }}
                             </div>
-                            <button
-                                type="button"
-                                class="ml-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-700 focus:outline-none"
-                                wire:click="removeTag({{ $index }})">
+                            <button type="button" class="ml-2 w-6 h-6 bg-red-500 text-white rounded-full flex items-center justify-center hover:bg-red-700 focus:outline-none" wire:click="removeTag({{ $index }})">
                                 <span class="text-sm">&times;</span>
                             </button>
                         </span>
-
                         @endforeach
                     </div>
                 </div>
             </div>
 
-
-
-            <button type="submit" class=" w-full btn btn-primary mt-4 px-6 py-3 bg-merah text-white rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-merah">Simpan Deskripsi</button>
+            <!-- Submit Button -->
+            <button type="submit" class="w-full btn btn-primary mt-4 px-6 py-3 bg-merah text-white rounded-lg hover:bg-red-500 focus:outline-none focus:ring-2 focus:ring-merah">Simpan Deskripsi</button>
         </form>
     </div>
+
 
 </div>
