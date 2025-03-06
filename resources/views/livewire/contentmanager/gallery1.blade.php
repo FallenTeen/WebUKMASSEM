@@ -10,13 +10,10 @@
                 </svg>
             </button>
 
-            <!-- Search Input -->
             <input wire:model.live.debounce.300ms="searchTerm"
                 class="text-white input w-full rounded-full px-8 py-3 border-2 border-transparent focus:outline-none focus:border-red-500 placeholder-gray-400 transition-all duration-300 bg-white/20 backdrop-blur-lg shadow-md"
                 placeholder="Cari Proker, Kegiatan, Tag..." />
 
-
-            <!-- Reset Button -->
             <button wire:click="loadMore" type="button" class="absolute right-3 -translate-y-1/2 top-1/2 p-1">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-white" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -48,11 +45,9 @@
 
     </div>
     @if($items->count() > 0)
-        <div class="grid grid-cols-2 md:grid-cols-4 grid-rows-{{ ceil($limit / 9) }} gap-4">
-
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
             @foreach ($items as $index => $item)
                 <a href="{{ $item->url }}" class="relative group {{ $index % 4 == 0 ? 'col-span-1 row-span-2' : '' }}">
-
                     @if (!empty($item->gambar) && file_exists(public_path('storage/' . $item->gambar)))
                         <img class="h-full object-cover rounded-lg" src="{{ asset('storage/' . $item->gambar) }}"
                             alt="{{ $item->judul }}">
@@ -60,7 +55,6 @@
                         <img class="h-full object-cover rounded-lg"
                             src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="Fallback Image">
                     @endif
-
                     <div
                         class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                         <h3 class="text-lg font-bold">{{ $item->judul }}</h3>
@@ -68,13 +62,11 @@
                     </div>
                 </a>
             @endforeach
-
-
         </div>
         <div>
             @if ($items->count() >= $limit)
                 <div
-                    class="fter:h-px py-24 flex items-center before:h-px before:flex-1  before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300  after:content-['']">
+                    class="fter:h-px py-24 flex items-center before:h-px before:flex-1 before:bg-gray-300 before:content-[''] after:h-px after:flex-1 after:bg-gray-300 after:content-['']">
                     <button wire:click="loadMore" type="button"
                         class="group bg-gray-100 flex items-center rounded-full border border-gray-300 bg-secondary-50 px-4 py-2 text-center text-sm font-medium text-gray-900 hover:bg-gray-100">
                         <div class="group-hover:animate-bounce">
@@ -91,10 +83,9 @@
             @endif
         </div>
     @else
-        <div>
-            <div class="text-center justify-center flex text-white bg-black text-4xl font-bold">Hmmm... Nampaknya
-                kata kunci/Tanggal tersebut tidak bisa aku cari yang cocok </div>
-            <h1></h1>
+        <div class="flex flex-col items-center justify-center text-center text-white bg-black py-20 rounded-lg">
+            <div class="text-4xl font-bold mb-4">Hmmm... Nampaknya kata kunci/Tanggal tersebut tidak bisa aku cari yang
+                cocok</div>
         </div>
     @endif
 </div>

@@ -46,7 +46,6 @@ class ProkerCard extends Component
 
             $this->prokers = $query->get();
         } else {
-            // Menampilkan proker berdasarkan kategori tertentu dari 'tb_proker'
             $query = Proker::query()->where('judul', '!=', 'lain')->where('proker', $this->proker);
             if ($this->randomize) {
                 $query->inRandomOrder();

@@ -4,18 +4,29 @@ namespace App\Livewire\Contentmanager;
 
 use Livewire\Component;
 use App\Models\Proker;
-use Illuminate\Support\Facades\Storage;
+use App\Models\MainProker;
+
 class GeneralCarousel extends Component
 {
     public $items;
     public $limit;
     public $randomize;
+    public $spesifikProker;
 
-    public function mount($limit = 5, $randomize = false)
+    public function mount($limit = 5, $randomize = false, $spesifikProker = null)
     {
         $this->limit = $limit;
         $this->randomize = $randomize;
-        $query = Proker::query()->where('judul', '!=', 'lain');
+        $this->spesifikProker = $spesifikProker;
+
+        $query = Proker::query();
+
+        if ($this->spesifikProker) {
+            $mainProker = MainProker::where('judul', $this->spesifikProker)->first();
+            if ($mainProker) {
+                $query->where('main_proker_id', $mainProker->id);
+            }
+        }
 
         if ($this->randomize) {
             $query->inRandomOrder();
@@ -24,18 +35,13 @@ class GeneralCarousel extends Component
         if ($this->limit) {
             $query->limit($this->limit);
         }
-        $items = $query->get(['id', 'gambar', 'judul', 'deskripsi', 'tanggal']);
 
-
-        $this->items = $items->map(function ($item) {
-            if ($item->gambar) {
-                $item->gambar = 'storage/' . $item->gambar; 
-            } else {
-                $item->gambar = 'storage/images/bg.png'; 
-            }
+        $this->items = $query->get(['id', 'gambar', 'judul', 'deskripsi', 'tanggal'])->map(function ($item) {
+            $item->gambar = $item->gambar ? 'storage/' . $item->gambar : 'storage/images/bg.png';
             return $item;
         });
     }
+
     public function render()
     {
         return view('livewire.contentmanager.general-carousel');

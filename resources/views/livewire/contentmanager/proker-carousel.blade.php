@@ -15,9 +15,7 @@
         }
     }" x-init="startAutoplay()" class="relative w-full h-96 overflow-hidden">
 
-    <!-- Carousel Container -->
     <div class="h-full relative">
-        <!-- Carousel Images -->
         @foreach ($items as $index => $item)
             <div x-show="currentIndex === {{ $index }}" x-transition.opacity.duration.1000ms
                 class="absolute inset-0 w-full h-full">
@@ -35,7 +33,6 @@
         @endforeach
     </div>
 
-    <!-- Carousel Controls -->
     <button @click="previous()"
         class="absolute left-5 top-1/2 z-20 flex rounded-full -translate-y-1/2 items-center justify-center bg-white/40 p-2 text-neutral-600 transition hover:bg-white/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black active:outline-offset-0 dark:bg-neutral-950/40 dark:text-neutral-300 dark:hover:bg-neutral-950/60 dark:focus-visible:outline-white"
         aria-label="previous slide">

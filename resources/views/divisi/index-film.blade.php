@@ -40,7 +40,7 @@
             <div class="w-1/2 items-center justify-center text-center flex h-1/2">
                 <a href="#deskripsi"
                     class="mt-4 text-gray-800 flex justify-center gap-2 items-center mx-auto shadow-xl text-lg bg-gray-50 backdrop-blur-md lg:font-semibold isolation-auto border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 before:hover:w-full before:-left-full before:hover:left-0 before:rounded-full before:bg-yellow-400 hover:text-gray-50 before:-z-10 before:aspect-square before:hover:scale-150 before:hover:duration-700 relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group">
-                    Jelajahi Tentang Divisi Tari
+                    Jelajahi Tentang Divisi Film
                     <svg class="w-8 h-8 justify-end group-hover:animate-pulse group-hover:bg-gray-100 text-gray-900 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2"
                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="size-6">
@@ -87,14 +87,13 @@
                     Tentang Divisi Film
                 </div>
                 <p class="indent-8 text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit turpis sit amet elit
-                    fringilla, et vestibulum dolor varius. Pellentesque fermentum sem eu eros dapibus, in imperdiet diam
-                    vulputate. Aliquam erat volutpat. Proin et elementum urna. Nullam elementum at ligula vehicula
-                    dignissim. Vestibulum in odio eget erat consequat imperdiet. Morbi fringilla, lorem sit amet
-                    pulvinar fringilla, lectus arcu ultrices libero, a pharetra justo lorem a enim. Pellentesque pretium
-                    odio ex, eu mattis mi finibus eu. Morbi ornare enim nisl, vel luctus mi facilisis interdum. Aliquam
-                    scelerisque sem justo, id euismod eros condimentum ut. Aenean ut nibh sit amet nisl interdum
-                    vulputate in eget odio.
+                    Divisi film merupakan wadah bagi pengembangan kemampuan dan kreativitas dalam bidang perfilman,
+                    mencakup berbagai aspek seperti penyutradaraan, sinematografi, penulisan skenario, editing, serta
+                    efek visual. Divisi ini bertujuan untuk membentuk individu yang mandiri, kreatif, dan inovatif dalam
+                    menciptakan karya film yang berkualitas dan berdaya saing. Melalui berbagai kegiatan seperti
+                    pelatihan, produksi film, serta eksplorasi teknik dan konsep sinematik, divisi film menjadi ruang
+                    bagi anggotanya untuk mengasah keterampilan teknis dan artistik, sekaligus memahami dinamika
+                    industri film yang terus berkembang.
                 </p>
             </div>
         </div>

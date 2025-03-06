@@ -87,14 +87,12 @@
                     Tentang Divisi Teater
                 </div>
                 <p class="indent-8 text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit turpis sit amet elit
-                    fringilla, et vestibulum dolor varius. Pellentesque fermentum sem eu eros dapibus, in imperdiet diam
-                    vulputate. Aliquam erat volutpat. Proin et elementum urna. Nullam elementum at ligula vehicula
-                    dignissim. Vestibulum in odio eget erat consequat imperdiet. Morbi fringilla, lorem sit amet
-                    pulvinar fringilla, lectus arcu ultrices libero, a pharetra justo lorem a enim. Pellentesque pretium
-                    odio ex, eu mattis mi finibus eu. Morbi ornare enim nisl, vel luctus mi facilisis interdum. Aliquam
-                    scelerisque sem justo, id euismod eros condimentum ut. Aenean ut nibh sit amet nisl interdum
-                    vulputate in eget odio.
+                    Divisi teater ASSEM merupakan organisasi dilingkungan Universitas Amikom Purwokerto yang berfokus
+                    pada seni teater. Teater ASSEM dapat menjadi wadah bagi mahasiswa yang tertarik dalam seni
+                    pertunjukan seperti akting, penyutradaraan, penulisan naskah, desain panggung, dan lainnya yang
+                    berhubungan dengan produksi teater. Secara keseluruhan Divisi Teater merupakan wadah bagi mahasiswa
+                    Amikom Purwokerto yang tertarik untuk berlatih dan berkreasi untuk menciptakan karya karya baru
+                    dalam teater sebagai wujud melestarikan seni pertunjukan teater di Indonesia
                 </p>
             </div>
         </div>

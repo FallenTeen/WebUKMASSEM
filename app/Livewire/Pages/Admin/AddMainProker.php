@@ -8,6 +8,6 @@ class AddMainProker extends Component
 {
     public function render()
     {
-        return view('livewire.pages.admin.add-main-proker');
+        return view('livewire.pages.admin.add-main-proker')->layout('layouts.app');
     }
 }

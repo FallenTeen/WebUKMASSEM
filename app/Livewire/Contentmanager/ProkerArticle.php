@@ -7,14 +7,14 @@ use App\Models\Proker;
 
 class ProkerArticle extends Component
 {
-    public $idproker;
-    public function mount($idproker)
+    public $id;
+    public function mount($id)
     {
-        $this->proker = Proker::where('id', $idproker)->first();
+        $this->proker = Proker::find($id);
         if (!$this->proker) {
             abort(404);
         }
-        $this->proker->judul = convertToUpperCase($this->proker->judul);
+        $this->proker->judul = strtoupper($this->proker->judul); 
     }
     public function render()
     {

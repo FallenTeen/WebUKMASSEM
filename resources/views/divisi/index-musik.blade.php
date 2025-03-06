@@ -87,14 +87,12 @@
                     Tentang Divisi Musik
                 </div>
                 <p class="indent-8 text-justify">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse hendrerit turpis sit amet elit
-                    fringilla, et vestibulum dolor varius. Pellentesque fermentum sem eu eros dapibus, in imperdiet diam
-                    vulputate. Aliquam erat volutpat. Proin et elementum urna. Nullam elementum at ligula vehicula
-                    dignissim. Vestibulum in odio eget erat consequat imperdiet. Morbi fringilla, lorem sit amet
-                    pulvinar fringilla, lectus arcu ultrices libero, a pharetra justo lorem a enim. Pellentesque pretium
-                    odio ex, eu mattis mi finibus eu. Morbi ornare enim nisl, vel luctus mi facilisis interdum. Aliquam
-                    scelerisque sem justo, id euismod eros condimentum ut. Aenean ut nibh sit amet nisl interdum
-                    vulputate in eget odio.
+                    Divisi Musik merupakan wadah untuk mengembangkan kreativitas, bakat dan minat yag mencakup
+                    aspek aspek dalam bermusik. divisi ini bertujuan untuk membentuk individu yang kreatif dan inovatif
+                    dan menciptakan karya yang berkalitas.
+                    banyak kegiatan yang mendukung proses dalam bermusik pada divisi musik UKM ASSEM. diantaranya adalah
+                    produksi musik dan panggung musik untuk mengembangkan kreativitas sekaligus mentalitas dalam dunia
+                    bermusik.
                 </p>
             </div>
         </div>

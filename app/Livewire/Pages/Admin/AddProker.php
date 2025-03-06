@@ -72,10 +72,8 @@ class AddProker extends Component
     }
     public function addTag()
     {
-        if (!empty($this->tagInput) && !in_array($this->tagInput, $this->tags)) {
-            $this->tags[] = $this->tagInput;
-            $this->tagInput = '';
-        }
+        $this->tags[] = $this->tagInput;
+        $this->tagInput = '';
     }
 
     public function removeTag($index)

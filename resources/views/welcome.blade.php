@@ -20,27 +20,27 @@
 
     <section id="landing" class="relative h-screen overflow-hidden bg-cover bg-center"
         style="background-image: url('{{ asset('images/bg-1.JPG') }}'); background-attachment: fixed;">
-        <div class="absolute inset-0 bg-white opacity-30"></div>
+        <div class="absolute inset-0 bg-black bg-opacity-40 backdrop-filter backdrop-blur-sm"></div>
         <div class="relative z-10 flex flex-col lg:flex-row items-center justify-center lg:justify-around h-full from-black bg-gradient-to-t to-transparent bg-opacity-60"
             data-aos="zoom-out">
             <div class="mt-8 lg:mt-0 px-8 w-full lg:w-1/2 flex flex-col justify-center items-center lg:items-start">
-                <div class="bg-gradient-to-r from-red-700 to-red-400 w-fit rounded-full drop-shadow-lg backdrop-blur-md flex items-center justify-center"
+                <div class="bg-gradient-to-r from-red-700 to-red-400 w-fit rounded-full drop-shadow-lg backdrop-blur-md flex items-center justify-center transform transition-all duration-500 hover:scale-105"
                     data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex h-10 mx-2 my-2">
+                    <div class="flex h-10 mx-2 my-2 animate-pulse">
                         <img src="{{ asset('icons/assem.png') }}">
                     </div>
                     <h1 class="px-6 py-1 text-white text-2xl font-bold text-center lg:text-left">Welcome To</h1>
                 </div>
 
-                <h2 class="text-white text-4xl lg:text-6xl font-black mb-2 mt-4 drop-shadow-lg text-center lg:text-left"
+                <h2 class="text-white text-4xl lg:text-6xl font-black mb-2 mt-4 drop-shadow-lg text-center lg:text-left animate-fadeIn"
                     data-aos="fade-up" data-aos-delay="600">UKM ASSEM</h2>
                 <p class="text-white text-xl lg:text-2xl mb-4 font-Poppins font-semibold text-center lg:text-left"
                     data-aos="fade-up" data-aos-delay="900">
                     Unit Kegiatan Mahasiswa Amikom Seneng Seni Dan Musik
                 </p>
-                <p class="text-white text-md lg:text-xl font-Poppins font-md mt-2 text-justify lg:text-left line-clamp-8"
+                <p class="text-justify text-white text-md lg:text-xl font-Poppins font-md mt-2 lg:text-left line-clamp-8"
                     data-aos="fade-up" data-aos-delay="900">
-                    Unit UKM ASSEM (Amikom Seneng Seni dan Musik) adalah sebuah organisasi mahasiswa yang berdedikasi
+                    UKM ASSEM (Amikom Seneng Seni dan Musik) adalah sebuah organisasi mahasiswa yang berdedikasi
                     dalam bidang
                     seni di lingkungan kampus. Organisasi ini memiliki lima divisi yang berfokus pada berbagai aspek
                     seni, menciptakan
@@ -97,13 +97,11 @@
 
         <div class="max-w-screen-xl w-full px-4 sm:px-8 relative z-10">
             <div class="flex flex-col sm:flex-row items-center">
-                <!-- Image Section -->
                 <div data-aos="fade-right" class="sm:w-1/3 lg:w-1/3 w-72 p-6 text-center">
                     <img src="{{ asset('icons/assem.png') }}"
                         class="object-contain max-w-full mx-auto rounded-full drop-shadow-[0_0_25px_rgba(255,255,255,0.9)]">
                 </div>
 
-                <!-- Text Section -->
                 <div class="sm:w-2/3 w-full p-6">
                     <div class="text">
                         <span data-aos="fade-left" data-aos-delay="100"
@@ -144,20 +142,99 @@
                         <h2 data-aos="fade-right" data-aos-delay="200" class="my-4 font-bold text-4xl lg:text-6xl">
                             VISI Dan MISI <span class="text-merah">UKM ASSEM</span>
                         </h2>
-                        <div class="flex gap-12 lg:gap-24">
-                            <div class="flex flex-col text-start gap-4">
-                                <h1 data-aos="fade-right" class="text-2xl font-bold">VISI</h1>
-                                <p data-aos="fade-right" data-aos-delay="300" class="text-white/80">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolore eveniet.
-                                    Cumque iusto nobis tempore labore atque aliquam culpa earum.
+                        <div class="flex flex-col gap-8 mt-4 lg:gap-8">
+                            <!-- Vision Section -->
+                            <div data-aos="fade-up"
+                                class="group relative p-8 rounded-2xl bg-gradient-to-br from-purple-900/30 to-blue-900/30 hover:bg-gradient-to-tl transition-all duration-500 border border-white/10 hover:border-white/20">
+                                <div
+                                    class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTggMHYxNk0xNiA4SDBNOCAwbDggOC04IDhMOCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9zdmc+')] opacity-10">
+                                </div>
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="p-3 bg-gradient-to-br from-purple-500 to-blue-500 rounded-lg shadow-lg">
+                                        <i class="fas fa-eye text-xl text-white"></i>
+                                    </div>
+                                    <h2
+                                        class="text-2xl font-bold bg-gradient-to-r from-purple-400 to-blue-400 bg-clip-text text-transparent">
+                                        VISI
+                                    </h2>
+                                </div>
+                                <p
+                                    class="text-lg leading-relaxed text-white/90 hover:text-white transition-colors duration-300">
+                                    Unggul dalam kreativitas dan inovasi untuk melestarikan unsur seni budaya serta
+                                    menjadi pelopor unit kegiatan mahasiswa berdasarkan pancasila.
                                 </p>
                             </div>
-                            <div class="flex flex-col text-start gap-4">
-                                <h1 data-aos="fade-right" class="text-2xl font-bold">Misi</h1>
-                                <p data-aos="fade-right" data-aos-delay="300" class="text-white/90">
-                                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque, dolore eveniet.
-                                    Cumque iusto nobis tempore labore atque aliquam culpa earum.
-                                </p>
+
+                            <!-- Mission Section -->
+                            <div data-aos="fade-up" data-aos-delay="200"
+                                class="group relative p-8 rounded-2xl bg-gradient-to-br from-rose-900/30 to-amber-900/30 hover:bg-gradient-to-tl transition-all duration-500 border border-white/10 hover:border-white/20">
+                                <div
+                                    class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTYiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHBhdGggZD0iTTggMHYxNk0xNiA4SDBtOC04IDggOC04IDhMOCAwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLW9wYWNpdHk9Ii4xIi8+PC9zdmc+')] opacity-10">
+                                </div>
+                                <div class="flex items-center gap-4 mb-6">
+                                    <div class="p-3 bg-gradient-to-br from-rose-500 to-amber-500 rounded-lg shadow-lg">
+                                        <i class="fas fa-road text-xl text-white"></i>
+                                    </div>
+                                    <h2
+                                        class="text-2xl font-bold bg-gradient-to-r from-rose-400 to-amber-400 bg-clip-text text-transparent">
+                                        MISI
+                                    </h2>
+                                </div>
+                                <div class="flex flex-col gap-6">
+                                    <div class="flex gap-4 items-start">
+                                        <div
+                                            class="flex-shrink-0 mt-1 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-amber-400 font-bold text-sm">
+                                            1
+                                        </div>
+                                        <p
+                                            class="text-lg leading-relaxed text-white/90 hover:text-white transition-colors duration-300">
+                                            Menjalankan organisasi Unit Kegiatan Mahasiswa dalam bidang kesenian dan
+                                            kebudayaan
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-4 items-start">
+                                        <div
+                                            class="flex-shrink-0 mt-1 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-amber-400 font-bold text-sm">
+                                            2
+                                        </div>
+                                        <p
+                                            class="text-lg leading-relaxed text-white/90 hover:text-white transition-colors duration-300">
+                                            Menyelenggarakan kegiatan pagelaran pentas seni dan budaya di lingkungan
+                                            mahasiswa maupun masyarakat
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-4 items-start">
+                                        <div
+                                            class="flex-shrink-0 mt-1 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-amber-400 font-bold text-sm">
+                                            3
+                                        </div>
+                                        <p
+                                            class="text-lg leading-relaxed text-white/90 hover:text-white transition-colors duration-300">
+                                            Melaksanakan pengabdian masyarakat dan kerja sama di bidang kesenian
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-4 items-start">
+                                        <div
+                                            class="flex-shrink-0 mt-1 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-amber-400 font-bold text-sm">
+                                            4
+                                        </div>
+                                        <p
+                                            class="text-lg leading-relaxed text-white/90 hover:text-white transition-colors duration-300">
+                                            Mengembangkan minat dan bakat para mahasiswa di bidang kesenian
+                                        </p>
+                                    </div>
+                                    <div class="flex gap-4 items-start">
+                                        <div
+                                            class="flex-shrink-0 mt-1 w-8 h-8 bg-white/10 rounded-full flex items-center justify-center text-amber-400 font-bold text-sm">
+                                            5
+                                        </div>
+                                        <p
+                                            class="text-lg text-left leading-relaxed text-white/90 hover:text-white transition-colors duration-300">
+                                            Merangkul semua mahasiswa agar dapat menanamkan rasa cinta budaya serta
+                                            mengasah kreativitas dalam bidang kesenian
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -166,7 +243,7 @@
         </div>
     </section>
     <section>
-    @livewire('contentmanager.general-carousel', ['limit' => 5, 'randomize' => true])
+        @livewire('contentmanager.general-carousel', ['limit' => 5, 'randomize' => true,])
     </section>
 
     <section class="pt-4 items-center h-32 px-4 sm:px-48 text-white bg-black">
@@ -288,9 +365,6 @@
                                 <p class="text-neutral-600 ">
                                     assem.amikompurwokerto@gmail.com
                                 </p>
-                                <p class="text-neutral-600 ">
-                                    +62 xxxxxx
-                                </p>
                             </div>
                         </div>
                     </div>
@@ -310,10 +384,11 @@
                                     Humas
                                 </p>
                                 <p class="text-neutral-600 ">
-                                    Humas@gmail.com
+                                    Humasassem25@gmail.com
                                 </p>
                                 <p class="text-neutral-600 ">
-                                    +62 xxxxxxx
+                                    +62 851 5620 8507 <a class="text-red-800 hover:underline"
+                                        href="https://wa.me/6285156208507">(Whatsapp)</a>
                                 </p>
                             </div>
                         </div>
@@ -338,7 +413,8 @@
                                     rt@gmail.com
                                 </p>
                                 <p class="text-neutral-600 ">
-                                    +62 xxxxx
+                                    +62 838 5314 3635 <a class="text-red-800 hover:underline"
+                                        href="https://wa.me/6283853143635">(Whatsapp)</a>
                                 </p>
                             </div>
                         </div>
@@ -361,8 +437,9 @@
                                 <p class="text-neutral-600 ">
                                     vlamingvlaming0@gmail.com
                                 </p>
-                                <p class="text-neutral-600">
-                                    +62 851 5620 8507
+                                <p class="text-neutral-600 ">
+                                    +62 851 5620 8507 <a class="text-red-800 hover:underline"
+                                        href="https://wa.me/6285156208507">(Whatsapp)</a>
                                 </p>
                             </div>
                         </div>
@@ -375,7 +452,7 @@
     <x-custom.footer></x-custom.footer>
     <script>
         if (!localStorage.getItem('visited')) {
-            localStorage.setItem('visited', 'true'); 
+            localStorage.setItem('visited', 'true');
             window.location.href = "/splash";
         }
     </script>
