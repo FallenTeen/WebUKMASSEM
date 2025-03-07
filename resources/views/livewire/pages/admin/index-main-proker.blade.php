@@ -37,12 +37,12 @@
                     </x-dropdown>
                 </div>
                 
-                <a href="{{ route('admin.addmainproker') }}" class="flex items-center justify-center w-full md:w-auto px-4 py-2 text-sm font-medium text-white bg-merah border border-transparent rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition">
+                <!-- <a href="{{ route('admin.addmainproker') }}" class="flex items-center justify-center w-full md:w-auto px-4 py-2 text-sm font-medium text-white bg-merah border border-transparent rounded-lg hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 transition">
                     <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/>
                     </svg>
                     {{ __('New Program') }}
-                </a>
+                </a> -->
             </div>
         </div>
     </x-slot>
@@ -109,9 +109,9 @@
                                         @if($sortDirection === 'asc') ↑ @else ↓ @endif
                                     @endif
                                 </th>
-                                <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
+                                <!-- <th class="px-6 py-3 text-right text-xs font-medium text-gray-500 dark:text-gray-400 uppercase tracking-wider">
                                     Actions
-                                </th>
+                                </th> -->
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
@@ -171,7 +171,7 @@
                                             </span>
                                     @endswitch
                                 </td>
-                                <td class="px-6 py-4 text-right whitespace-nowrap">
+                                <!-- <td class="px-6 py-4 text-right whitespace-nowrap">
                                     <div class="flex justify-end space-x-3">
                                         <a href="{{ route('admin.editmainproker', $proker->id) }}" 
                                            class="text-gray-400 hover:text-merah dark:hover:text-merah-300 transition"
@@ -189,7 +189,7 @@
                                             </svg>
                                         </button>
                                     </div>
-                                </td>
+                                </td> -->
                             </tr>
                             @empty
                             <tr>

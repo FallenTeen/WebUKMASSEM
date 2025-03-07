@@ -56,30 +56,29 @@
         <div class="flex flex-col lg:flex-row justify-center items-center w-full h-full">
             <!-- Left Section -->
             <div class="w-full lg:w-1/2 px-6 py-6 lg:px-24 lg:py-24 grid grid-cols-2 sm:grid-cols-2 gap-4">
-                <!-- Left Grid -->
-                <div class="col-span-1 grid grid-rows-4 gap-4">
+                <div class="col-span-1 grid grid-rows-5 gap-4">
                     <div class="row-span-3">
-                        <img class="w-full h-full object-cover rounded-lg" src="https://picsum.photos/300/200?random=1"
-                            alt="Placeholder Image 1">
+                        <img class="w-full h-full object-cover aspect-video rounded-lg"
+                            src="{{ asset('storage/images/Teater-1.jpg') }}" alt="Placeholder Image 1">
                     </div>
-                    <div class="row-span-1">
-                        <img class="w-full h-full object-cover rounded-lg" src="https://picsum.photos/300/100?random=2"
-                            alt="Placeholder Image 2">
+                    <div class="row-span-2">
+                        <img class="w-full h-full object-cover aspect-video rounded-lg"
+                            src="{{ asset('storage/images/Teater-2.jpg') }}" alt="Placeholder Image 2">
                     </div>
                 </div>
-
-                <!-- Right Grid -->
-                <div class="col-span-1 grid grid-rows-4 gap-4">
-                    <div class="row-span-1">
-                        <img class="w-full h-full object-cover rounded-lg" src="https://picsum.photos/300/100?random=3"
-                            alt="Placeholder Image 3">
+                <div class="col-span-1 grid grid-rows-5 gap-4">
+                    <div class="row-span-2">
+                        <img class="w-full h-full object-cover aspect-video rounded-lg"
+                            src="{{ asset('storage/images/Teater-3.jpg') }}" alt="Placeholder Image 3">
                     </div>
                     <div class="row-span-3">
-                        <img class="w-full h-full object-cover rounded-lg" src="https://picsum.photos/300/200?random=4"
-                            alt="Placeholder Image 4">
+                        <img class="w-full h-full object-cover aspect-video rounded-lg"
+                            src="{{ asset('storage/images/Teater-4.jpg') }}" alt="Placeholder Image 4">
                     </div>
                 </div>
             </div>
+
+
 
             <!-- Right Section -->
             <div class="w-full lg:w-1/2  px-6 py-6">
@@ -113,25 +112,36 @@
 
         <div data-aos="fade-up"
             class="lg:flex hidden flex-wrap gap-4 justify-center px-2 mx-auto sm:grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
-            <x-custom.flip-card title="Musik" emoji="🎼" frontContent="This is the front content."
-                backContent="Here is the back content." actionText="Lihat Karya Kami" actionRoute="index.musik"
-                backEmoji="🎼" backgroundImageFront="{{ asset('storage/images/music.png') }}" />
+            <x-custom.flip-card title="Musik" emoji="🎼"
+                frontContent="Eksplorasi bunyi dan nada yang menggetarkan jiwa. Divisi Musik menghadirkan karya-karya segar penuh inspirasi."
+                backContent="Dari aransemen klasik hingga musik eksperimental - kami mendobrak batas kreativitas dengan tetap menjaga kualitas."
+                actionText="Lihat Karya Kami" actionRoute="index.musik" backEmoji="🎼"
+                backgroundImageFront="{{ asset('storage/images/music.png') }}" />
 
-            <x-custom.flip-card title="Fotografi" emoji="📸" frontContent="This is the front content."
-                backContent="Here is the back content." actionText="Lihat Karya Kami" actionRoute="index.foto"
-                backEmoji="📸" backgroundImageFront="{{ asset('storage/images/foto.png') }}" />
+            <x-custom.flip-card title="Fotografi" emoji="📸"
+                frontContent="Menangkap cerita dalam setiap bingkai. Divisi Fotografi melihat dunia dengan perspektif berbeda yang menginspirasi."
+                backContent="Kami mengekspresikan kreativitas melalui lensa, menciptakan visual yang berkesan dan memiliki makna mendalam."
+                actionText="Lihat Karya Kami" actionRoute="index.foto" backEmoji="📸"
+                backgroundImageFront="{{ asset('storage/images/foto.png') }}" />
 
-            <x-custom.flip-card title="Film" emoji="🎬" frontContent="This is the front content."
-                backContent="Here is the back content." actionText="Lihat Karya Kami" actionRoute="index.film"
-                backEmoji="🎬" backgroundImageFront="{{ asset('storage/images/film.png') }}" />
+            <x-custom.flip-card title="Film" emoji="🎬"
+                frontContent="Bercerita melalui visual yang bergerak. Divisi Film menghadirkan karya sinematik yang menggerakkan emosi."
+                backContent="Dari cerita sehari-hari hingga konsep abstrak, kami membingkai ide-ide kreatif dalam karya audio visual yang menghibur dan bermakna."
+                actionText="Lihat Karya Kami" actionRoute="index.film" backEmoji="🎬"
+                backgroundImageFront="{{ asset('storage/images/film.png') }}" />
 
-            <x-custom.flip-card title="Tari" emoji="💃" frontContent="This is the front content."
-                backContent="Here is the back content." actionText="Lihat Karya Kami" actionRoute="index.tari"
-                backEmoji="💃" backgroundImageFront="{{ asset('storage/images/tari.png') }}" />
+            <x-custom.flip-card title="Tari" emoji="💃"
+                frontContent="Memaknai kehidupan melalui gerakan. Divisi Tari mempersembahkan koreografi yang memukau dan penuh pesona."
+                backContent="Paduan gerak tradisional dan modern, kami menampilkan ekspresi tubuh yang bercerita tentang identitas dan keindahan seni pertunjukan."
+                actionText="Lihat Karya Kami" actionRoute="index.tari" backEmoji="💃"
+                backgroundImageFront="{{ asset('storage/images/tari.png') }}" />
 
-            <x-custom.flip-card title="Teater" emoji="🎭" frontContent="This is the front content."
-                backContent="Here is the back content." actionText="Lihat Karya Kami" actionRoute="index.teater"
-                backEmoji="🎭" backgroundImageFront="{{ asset('storage/images/teater.png') }}" />
+            <x-custom.flip-card title="Teater" emoji="🎭"
+                frontContent="Membawa penonton ke dunia imajinasi. Divisi Teater menghidupkan cerita dengan akting yang memikat."
+                backContent="Kami menciptakan pengalaman panggung yang menghibur sekaligus membuat penontonnya berpikir dan merasakan."
+                actionText="Lihat Karya Kami" actionRoute="index.teater" backEmoji="🎭"
+                backgroundImageFront="{{ asset('storage/images/teater.png') }}" />
+
         </div>
 
         <div data-aos="fade-up"

@@ -41,7 +41,7 @@ class Gallery1 extends Component
         }
         $query->limit($this->limit);
 
-        $this->items = $query->get(['gambar', 'judul', 'deskripsi', 'tanggal']);
+        $this->items = $query->get(['id','gambar', 'judul', 'deskripsi', 'tanggal']);
     }
     public function updatedSearchTerm()
     {

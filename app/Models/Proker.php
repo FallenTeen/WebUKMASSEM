@@ -104,23 +104,5 @@ class Proker extends Model
         return $this->belongsTo(User::class, 'author_id');
     }
 
-    // Events
-    protected static function boot()
-    {
-        parent::boot();
 
-        static::creating(function ($proker) {
-            if (empty($proker->slug)) {
-                $proker->slug = Str::slug($proker->judul . '-' . $proker->tanggal->format('Y-m-d'));
-            }
-        });
-
-        static::updating(function ($proker) {
-            // Add your logic here
-        });
-
-        static::deleting(function ($proker) {
-            // Add your logic here
-        });
-    }
 }

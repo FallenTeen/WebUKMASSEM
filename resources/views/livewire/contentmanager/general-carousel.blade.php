@@ -17,7 +17,6 @@
 
     <!-- Carousel Container -->
     <div class="h-full relative">
-        <!-- Carousel Images -->
         @foreach ($items as $index => $item)
             <div x-show="currentIndex === {{ $index }}" x-transition.opacity.duration.1000ms
                 class="absolute inset-0 w-full h-full">

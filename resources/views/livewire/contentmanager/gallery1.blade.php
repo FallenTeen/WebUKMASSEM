@@ -47,18 +47,19 @@
     @if($items->count() > 0)
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-4">
             @foreach ($items as $index => $item)
-                <a href="{{ $item->url }}" class="relative group {{ $index % 4 == 0 ? 'col-span-1 row-span-2' : '' }}">
+                <a href="{{ route('proker.show', ['id' => $item->id]) }}"
+                    class="relative group {{ $index % 4 == 0 ? 'col-span-1 row-span-2' : '' }}">
                     @if (!empty($item->gambar) && file_exists(public_path('storage/' . $item->gambar)))
-                        <img class="h-full object-cover rounded-lg" src="{{ asset('storage/' . $item->gambar) }}"
+                        <img class="w-full h-full object-cover rounded-lg" src="{{ asset('storage/' . $item->gambar) }}"
                             alt="{{ $item->judul }}">
                     @else
                         <img class="h-full object-cover rounded-lg"
                             src="https://images.unsplash.com/photo-1499856871958-5b9627545d1a" alt="Fallback Image">
                     @endif
                     <div
-                        class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                        <h3 class="text-lg font-bold">{{ $item->judul }}</h3>
-                        <p class="text-sm">{{ $item->deskripsi }}</p>
+                        class="absolute inset-0 bg-black bg-opacity-50 flex flex-col justify-center items-center text-center text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300 p-4">
+                        <h3 class="text-lg font-bold mb-2">{{ $item->judul }}</h3>
+                        <p class="text-sm line-clamp-3">{{ $item->deskripsi }}</p>
                     </div>
                 </a>
             @endforeach

@@ -7,33 +7,47 @@ use Livewire\WithFileUploads;
 use App\Models\Proker;
 use App\Models\MainProker;
 use App\Models\GambardeskCache;
-use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Livewire\Attributes\Validate;
+use Carbon\Carbon;
 
 class AddProker extends Component
 {
     use WithFileUploads;
+    const MAX_TAGS = 5, MAX_IMAGE_SIZE = 8192;
+    public $confirmCheck;
     public $step = 1;
-    public $judul, $main_proker_id, $gambar, $tanggal, $kategori, $allMainProkers, $tagInput;
-    public $deskripsi, $gambardesk = [], $tags = [], $gambardeskFiles = [];
+
+    #[Validate('required|exists:tb_main_proker,id')]
+    public $main_proker_id;
+
+    #[Validate('required|string|max:64')]
+    public $judul;
+
+    #[Validate('nullable|image|max:8192')]
+    public $gambar;
+
+    #[Validate('nullable|date')]
+    public $tanggal;
+
+    #[Validate('required|in:primer,sekunder')]
+    public $kategori = 'sekunder';
+
+    #[Validate('nullable|string')]
+    public $deskripsi;
+
+    public $tagInput = '';
     public $tempId;
-
-    protected $rules = [
-        'main_proker_id' => 'required|exists:tb_main_proker,id',
-        'judul' => 'required|string|max:64',
-        'gambar' => 'nullable|image|max:8192',
-        'tanggal' => 'nullable|date',
-        'deskripsi' => 'nullable|string',
-        'gambardesk.*' => 'nullable|image|max:8192',
-        'tags.*' => 'nullable|string|max:50',
-        'kategori' => 'required|in:primer,sekunder'
-    ];
-
+    public $tags = [];
+    public $gambardesk = [];
+    public $gambardeskFiles = [];
+    public $allMainProkers;
     public function mount()
     {
         $this->allMainProkers = MainProker::all();
-        $this->gambardesk = GambarDeskCache::where('user_id', Auth::id())->get();
+        $this->gambardesk = GambardeskCache::where('user_id', Auth::id())->get();
     }
 
     public function updated($propertyName)
@@ -45,12 +59,16 @@ class AddProker extends Component
     {
         $rules = $this->rulesForStep();
         $this->validate($rules);
-        $this->step++;
+        if ($this->step < 3) {
+            $this->step++;
+        }
     }
 
     public function prevStep()
     {
-        $this->step--;
+        if ($this->step > 1) {
+            $this->step--;
+        }
     }
 
     public function rulesForStep()
@@ -59,60 +77,94 @@ class AddProker extends Component
             1 => [
                 'main_proker_id' => 'required|exists:tb_main_proker,id',
                 'judul' => 'required|string|max:64',
-                'gambar' => 'nullable|image|max:8192',
+                'gambar' => 'nullable|image|max:' . self::MAX_IMAGE_SIZE,
                 'tanggal' => 'nullable|date',
                 'kategori' => 'required|in:primer,sekunder',
             ],
             2 => [
                 'deskripsi' => 'nullable|string',
+                'tags' => 'array|max:' . self::MAX_TAGS,
                 'tags.*' => 'nullable|string|max:50',
             ],
             default => [],
         };
     }
+
     public function addTag()
     {
-        $this->tags[] = $this->tagInput;
+        if (empty(trim($this->tagInput))) {
+            return;
+        }
+
+        $this->validate([
+            'tagInput' => 'required|string|max:50',
+        ]);
+
+        if (count($this->tags) >= self::MAX_TAGS) {
+            session()->flash('tag_error', 'Maximum ' . self::MAX_TAGS . ' tags allowed');
+            return;
+        }
+
+        if (!in_array($this->tagInput, $this->tags)) {
+            $this->tags[] = trim($this->tagInput);
+        }
+
         $this->tagInput = '';
     }
 
     public function removeTag($index)
     {
-        unset($this->tags[$index]);
-        $this->tags = array_values($this->tags);
+        if (isset($this->tags[$index])) {
+            unset($this->tags[$index]);
+            $this->tags = array_values($this->tags);
+        }
     }
 
     public function removeGambardesk($imageId)
     {
-        $image = GambarDeskCache::findOrFail($imageId);
+        $image = GambardeskCache::findOrFail($imageId);
 
         if ($image && $image->user_id == Auth::id()) {
             Storage::disk('public')->delete($image->path);
             $image->delete();
-            $this->gambardesk = GambarDeskCache::where('user_id', Auth::id())->get();
+            $this->gambardesk = GambardeskCache::where('user_id', Auth::id())->get();
         }
     }
+
     public function updatedGambardeskFiles()
     {
         $this->validate([
-            'gambardeskFiles.*' => 'image|max:8296',
+            'gambardeskFiles.*' => 'image|max:' . self::MAX_IMAGE_SIZE,
         ]);
 
         foreach ($this->gambardeskFiles as $file) {
-            $path = $file->store('proker/images', 'public');
+            $path = $file->store('proker/gambardesk', 'public');
 
-            GambarDeskCache::create([
+            GambardeskCache::create([
                 'path' => $path,
                 'type' => $file->getClientMimeType(),
                 'temp_id' => uniqid(),
                 'user_id' => Auth::id(),
             ]);
         }
-        $this->gambardesk = GambarDeskCache::where('user_id', Auth::id())->get();
+
+        $this->gambardesk = GambardeskCache::where('user_id', Auth::id())->get();
         $this->gambardeskFiles = [];
     }
+
     public function save()
     {
+        $this->validate([
+            'main_proker_id' => 'required|exists:tb_main_proker,id',
+            'judul' => 'required|string|max:64',
+            'gambar' => 'nullable|image|max:' . self::MAX_IMAGE_SIZE,
+            'tanggal' => 'nullable|date',
+            'deskripsi' => 'nullable',
+            'tags' => 'array|max:' . self::MAX_TAGS,
+            'tags.*' => 'nullable|string|max:50',
+            'kategori' => 'required|in:primer,sekunder',
+        ]);
+
         $gambarPath = $this->gambar
             ? $this->gambar->store('proker/images', 'public')
             : null;
@@ -122,17 +174,27 @@ class AddProker extends Component
             $gambardeskPaths[] = $image->path;
         }
 
+        $excerpt = substr(strip_tags($this->deskripsi), 0, 150);
+        if (strlen(strip_tags($this->deskripsi)) > 150) {
+            $excerpt .= '...';
+        }
+
+        $this->tanggal = Carbon::parse($this->tanggal);
         Proker::create([
             'main_proker_id' => $this->main_proker_id,
             'judul' => $this->judul,
             'gambar' => $gambarPath,
-            'gambardesk' => json_encode($gambardeskPaths),
+            'slug' => Str::slug($this->judul . '-' . $this->tanggal->format('Y-m-d')),
+            'gambardesk' => $gambardeskPaths,
             'tanggal' => $this->tanggal,
             'deskripsi' => $this->deskripsi,
-            'tags' => json_encode($this->tags),
+            'excerpt' => $excerpt,
+            'tags' => $this->tags,
             'kategori' => $this->kategori,
+            'author_id' => Auth::id(),
         ]);
-        GambarDeskCache::where('user_id', Auth::id())->delete();
+
+        GambardeskCache::where('user_id', Auth::id())->delete();
 
         sweetalert()->success('Proker Berhasil Ditambahkan');
         return redirect()->route('admin.indexproker');
